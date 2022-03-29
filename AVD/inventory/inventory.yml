@@ -6,23 +6,23 @@ all:
           children:
             CAS_Spines:
               hosts:
-                spine1-CAS
+                spine1-CAS:
                   ansible_host: 198.18.107.211
-                spine2-CAS
+                spine2-CAS:
                   ansible_host: 198.18.107.212
             CAS_Leafs:
               hosts:
-                borderleaf1-CAS
+                borderleaf1-CAS:
                   ansible_host: 198.18.107.213
-                borderleaf2-CAS
+                borderleaf2-CAS:
                   ansible_host: 198.18.107.214
-                leaf1-CAS
+                leaf1-CAS:
                   ansible_host: 198.18.107.215
-                leaf2-CAS
+                leaf2-CAS:
                   ansible_host: 198.18.107.216
-                leaf1-CAS
+                leaf1-CAS:
                   ansible_host: 198.18.107.217
-                leaf2-CAS
+                leaf2-CAS:
                   ansible_host: 198.18.107.218
     OI:
       children:
@@ -30,21 +30,21 @@ all:
           children:
             OI_Spines:
               hosts:
-                spine1-OI
+                spine1-OI:
                   ansible_host: 198.18.107.221
-                spine2-OI
+                spine2-OI:
                   ansible_host: 198.18.107.222
             OI_Leafs:
               hosts:
-                borderleaf-OI
+                borderleaf-OI:
                   ansible_host: 198.18.107.223
-                borderleaf2-OI
+                borderleaf2-OI:
                   ansible_host: 198.18.107.224
-                leaf1-OI
+                leaf1-OI:
                   ansible_host: 198.18.107.225
-                leaf2-OI
+                leaf2-OI:
                   ansible_host: 198.18.107.226
-                leaf1-OI
+                leaf1-OI:
                   ansible_host: 198.18.107.227
-                leaf2-OI
+                leaf2-OI:
                   ansible_host: 198.18.107.228
