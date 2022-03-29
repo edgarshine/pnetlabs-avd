@@ -20,9 +20,9 @@ all:
                   ansible_host: 198.18.107.215
                 leaf2-CAS:
                   ansible_host: 198.18.107.216
-                leaf1-CAS:
+                leaf3-CAS:
                   ansible_host: 198.18.107.217
-                leaf2-CAS:
+                leaf4-CAS:
                   ansible_host: 198.18.107.218
     OI:
       children:
@@ -36,7 +36,7 @@ all:
                   ansible_host: 198.18.107.222
             OI_Leafs:
               hosts:
-                borderleaf-OI:
+                borderleaf1-OI:
                   ansible_host: 198.18.107.223
                 borderleaf2-OI:
                   ansible_host: 198.18.107.224
@@ -44,7 +44,7 @@ all:
                   ansible_host: 198.18.107.225
                 leaf2-OI:
                   ansible_host: 198.18.107.226
-                leaf1-OI:
+                leaf3-OI:
                   ansible_host: 198.18.107.227
-                leaf2-OI:
+                leaf4-OI:
                   ansible_host: 198.18.107.228
