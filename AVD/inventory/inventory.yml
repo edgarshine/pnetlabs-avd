@@ -10,20 +10,25 @@ all:
                   ansible_host: 198.18.107.211
                 spine2-CAS:
                   ansible_host: 198.18.107.212
-            CAS_Leafs:
+            CAS_Borderleafs:
               hosts:
                 borderleaf1-CAS:
                   ansible_host: 198.18.107.213
                 borderleaf2-CAS:
                   ansible_host: 198.18.107.214
-                leaf1-CAS:
-                  ansible_host: 198.18.107.215
-                leaf2-CAS:
-                  ansible_host: 198.18.107.216
-                leaf3-CAS:
-                  ansible_host: 198.18.107.217
-                leaf4-CAS:
-                  ansible_host: 198.18.107.218
+            CAS_Leafs:
+              children:
+                CAS_POD1:
+                  hosts:
+                    leaf1-CAS:
+                      ansible_host: 198.18.107.215
+                    leaf2-CAS:
+                      ansible_host: 198.18.107.216
+                CAS_POD2:
+                    leaf3-CAS:
+                      ansible_host: 198.18.107.217
+                    leaf4-CAS:
+                      ansible_host: 198.18.107.218
     OI:
       children:
         OI_Fabric:
@@ -34,17 +39,23 @@ all:
                   ansible_host: 198.18.107.221
                 spine2-OI:
                   ansible_host: 198.18.107.222
-            OI_Leafs:
+            OI_Borderleafs:
               hosts:
                 borderleaf1-OI:
                   ansible_host: 198.18.107.223
                 borderleaf2-OI:
                   ansible_host: 198.18.107.224
-                leaf1-OI:
-                  ansible_host: 198.18.107.225
-                leaf2-OI:
-                  ansible_host: 198.18.107.226
-                leaf3-OI:
-                  ansible_host: 198.18.107.227
-                leaf4-OI:
-                  ansible_host: 198.18.107.228
+            OI_Leafs:
+              children:
+                OI_POD1:
+                  hosts:
+                    leaf1-OI:
+                      ansible_host: 198.18.107.225
+                    leaf2-OI:
+                      ansible_host: 198.18.107.226
+                OI_POD2:
+                  hosts:
+                    leaf3-OI:
+                      ansible_host: 198.18.107.227
+                    leaf4-OI:
+                      ansible_host: 198.18.107.228
