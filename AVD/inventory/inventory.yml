@@ -1,2 +1,51 @@
 ---
-
+all:
+  children:
+    CAS:
+      children:
+        CAS_Fabric:
+          children:
+            CAS_Spines:
+              hosts:
+                spine1-CAS
+                  management_ip: 198.18.107.211
+                spine2-CAS
+                  management_ip: 198.18.107.212
+            CAS_Leafs:
+              hosts:
+                borderleaf1-CAS
+                  management_ip: 198.18.107.213
+                borderleaf2-CAS
+                  management_ip: 198.18.107.214
+                leaf1-CAS
+                  management_ip: 198.18.107.215
+                leaf2-CAS
+                  management_ip: 198.18.107.216
+                leaf1-CAS
+                  management_ip: 198.18.107.217
+                leaf2-CAS
+                  management_ip: 198.18.107.218
+    OI:
+      children:
+        OI_Fabric:
+          children:
+            OI_Spines:
+              hosts:
+                spine1-OI
+                  management_ip: 198.18.107.221
+                spine2-OI
+                  management_ip: 198.18.107.222
+            OI_Leafs:
+              hosts:
+                borderleaf-OI
+                  management_ip: 198.18.107.223
+                borderleaf2-OI
+                  management_ip: 198.18.107.224
+                leaf1-OI
+                  management_ip: 198.18.107.225
+                leaf2-OI
+                  management_ip: 198.18.107.226
+                leaf1-OI
+                  management_ip: 198.18.107.227
+                leaf2-OI
+                  management_ip: 198.18.107.228
