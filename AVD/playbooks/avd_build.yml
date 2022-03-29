@@ -1,5 +1,5 @@
 # Play to build EOS configuration from EOS_DESIGNS
-- hosts: CAS_FABRIC
+- hosts: CAS_Fabric
   tasks:
     # BUILD EOS configuration
     - name: generate intended variables
