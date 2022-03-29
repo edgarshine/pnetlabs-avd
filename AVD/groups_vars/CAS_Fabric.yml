@@ -1,0 +1,46 @@
+l3leaf:
+  defaults:
+    # virtual router mac for VNIs assigned to Leaf switches
+    # format: xx:xx:xx:xx:xx:xx
+    virtual_router_mac_address: 00:1c:73:00:dc:01
+    platform: vEOS-LAB
+    bgp_as: 65100
+    spines: [spine1-CAS, spine2-CAS]
+    uplink_to_spine_interfaces: [Ethernet3, Ethernet4]
+    mlag_interfaces: [Ethernet1, Ethernet2]
+    spanning_tree_priority: 4096
+    spanning_tree_mode: mstp
+  node_groups:
+    CAS_BORDER:
+      bgp_as: 65110
+      nodes:
+        borderleaf1-CAS:
+          id: 1
+          mgmt_ip: 192.18.107.213/23
+          spine_interfaces: [Ethernet3, Ethernet4]
+        borderleaf2-CAS:
+          id: 2
+          mgmt_ip: 192.18.107.214/23
+          spine_interfaces: [Ethernet3, Ethernet4]
+    CAS_POD1:
+      bgp_as: 65111
+      nodes:
+        leaf1-CAS:
+          id: 1
+          mgmt_ip: 192.18.107.215/23
+          spine_interfaces: [Ethernet3, Ethernet4]
+        leaf2-CAS:
+          id: 2
+          mgmt_ip: 192.18.107.216/23
+          spine_interfaces: [Ethernet3, Ethernet4]
+    CAS_POD2:
+      bgp_as: 65112
+      nodes:
+        leaf3-CAS:
+          id: 3
+          mgmt_ip: 192.18.107.217/23
+          spine_interfaces: [Ethernet3, Ethernet4]
+        leaf4-CAS:
+          id: 4
+          mgmt_ip: 192.18.107.218/23
+          spine_interfaces: [Ethernet3, Ethernet4]
