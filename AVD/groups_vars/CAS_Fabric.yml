@@ -1,3 +1,9 @@
+---
+# L3LS Fabric Values - update these values with caution,
+# SOME CHANGES COULD BE DISRUPTIVE.
+
+fabric_name: CAS
+
 spine:
   defaults:
     platform: VEOS-LAB
