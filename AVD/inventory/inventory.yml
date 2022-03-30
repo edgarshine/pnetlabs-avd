@@ -31,6 +31,7 @@ all:
                     leaf2-CAS:
                       ansible_host: 198.18.107.216
                 CAS_POD2:
+                  hosts:
                     leaf3-CAS:
                       ansible_host: 198.18.107.217
                     leaf4-CAS:
