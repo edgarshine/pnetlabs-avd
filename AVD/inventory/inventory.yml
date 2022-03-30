@@ -34,18 +34,24 @@ all:
         OI_Fabric:
           children:
             OI_Spines:
+              vars:
+                type: spine
               hosts:
                 spine1-OI:
                   ansible_host: 198.18.107.221
                 spine2-OI:
                   ansible_host: 198.18.107.222
             OI_Borderleafs:
+              vars:
+                type: l3leaf
               hosts:
                 borderleaf1-OI:
                   ansible_host: 198.18.107.223
                 borderleaf2-OI:
                   ansible_host: 198.18.107.224
             OI_Leafs:
+              vars:
+                type: l3leaf
               children:
                 OI_POD1:
                   hosts:
