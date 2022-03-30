@@ -70,11 +70,11 @@ l3leaf:
       bgp_as: 65112
       nodes:
         leaf3-CAS:
-          id: 3
+          id: 1
           mgmt_ip: 192.18.107.217/23
           spine_interfaces: [Ethernet3, Ethernet4]
         leaf4-CAS:
-          id: 4
+          id: 2
           mgmt_ip: 192.18.107.218/23
           spine_interfaces: [Ethernet3, Ethernet4]
 

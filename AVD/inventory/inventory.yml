@@ -5,18 +5,24 @@ all:
         CAS_Fabric:
           children:
             CAS_Spines:
+              vars:
+                type: spine
               hosts:
                 spine1-CAS:
                   ansible_host: 198.18.107.211
                 spine2-CAS:
                   ansible_host: 198.18.107.212
             CAS_Borderleafs:
+              vars:
+                type: l3leaf
               hosts:
                 borderleaf1-CAS:
                   ansible_host: 198.18.107.213
                 borderleaf2-CAS:
                   ansible_host: 198.18.107.214
             CAS_Leafs:
+              vars:
+                type: l3leaf
               children:
                 CAS_POD1:
                   hosts:
