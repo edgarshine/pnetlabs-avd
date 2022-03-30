@@ -6,7 +6,7 @@ fabric_name: CAS
 
 spine:
   defaults:
-    platform: VEOS-LAB
+    platform: vEOS-LAB
     bgp_as: 65100
     # Overlay loopback IP and same pool can be assigned to both spine and l3leaf switches
     # If same loopback pool is defined for both spine and l3leaf,
@@ -28,7 +28,7 @@ spine:
 
 l3leaf:
   defaults:
-    platform: VEOS-LAB
+    platform: vEOS-LAB
     # virtual router mac for VNIs assigned to Leaf switches
     # format: xx:xx:xx:xx:xx:xx
     virtual_router_mac_address: 00:1c:73:00:dc:01
