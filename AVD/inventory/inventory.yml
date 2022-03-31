@@ -12,7 +12,7 @@ all:
                   ansible_host: 198.18.107.211
                 spine2-CAS:
                   ansible_host: 198.18.107.212
-            CAS_Borderleafs:
+            CAS_BORDERLEAFS:
               vars:
                 type: l3leaf
               hosts:
@@ -20,7 +20,7 @@ all:
                   ansible_host: 198.18.107.213
                 borderleaf2-CAS:
                   ansible_host: 198.18.107.214
-            CAS_Leafs:
+            CAS_LEAFS:
               vars:
                 type: l3leaf
               children:
@@ -38,9 +38,9 @@ all:
                       ansible_host: 198.18.107.218
     OI:
       children:
-        OI_Fabric:
+        OI_FABRIC:
           children:
-            OI_Spines:
+            OI_SPINE:
               vars:
                 type: spine
               hosts:
@@ -48,7 +48,7 @@ all:
                   ansible_host: 198.18.107.221
                 spine2-OI:
                   ansible_host: 198.18.107.222
-            OI_Borderleafs:
+            OI_BORDERLEAFS:
               vars:
                 type: l3leaf
               hosts:
@@ -56,7 +56,7 @@ all:
                   ansible_host: 198.18.107.223
                 borderleaf2-OI:
                   ansible_host: 198.18.107.224
-            OI_Leafs:
+            OI_LEAFS:
               vars:
                 type: l3leaf
               children:
