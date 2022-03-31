@@ -2,9 +2,9 @@ all:
   children:
     CAS:
       children:
-        CAS_Fabric:
+        CAS_FABRIC:
           children:
-            CAS_Spines:
+            CAS_SPINES:
               vars:
                 type: spine
               hosts:

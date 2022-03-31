@@ -2,7 +2,7 @@
 # L3LS Fabric Values - update these values with caution,
 # SOME CHANGES COULD BE DISRUPTIVE.
 
-fabric_name: CAS_Fabric
+fabric_name: CAS_FABRIC
 
 spine:
   defaults:
