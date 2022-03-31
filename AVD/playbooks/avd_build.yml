@@ -1,5 +1,5 @@
 # Play to build EOS configuration from EOS_DESIGNS
-- hosts: CAS_Spines
+- hosts: CAS_SPINES
   tasks:
     # BUILD EOS configuration
     - name: generate intended variables
