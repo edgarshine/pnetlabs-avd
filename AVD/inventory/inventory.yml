@@ -1,6 +1,6 @@
 all:
   children:
-    CAS:
+    DC:
       children:
         CAS_FABRIC:
           children:
@@ -36,8 +36,6 @@ all:
                       ansible_host: 198.18.107.217
                     leaf4-CAS:
                       ansible_host: 198.18.107.218
-    OI:
-      children:
         OI_FABRIC:
           children:
             OI_SPINE:
