@@ -75,13 +75,13 @@ all:
           children:
             CAS_DCI:
               vars:
-                type: l3_edge
+                type: l3_leaf
               hosts:
                 borderleaf1-CAS:
                 borderleaf2-CAS:
             OI_DCI:
               vars:
-                type: l3_edge
+                type: l3_leaf
               hosts:
                 borderleaf1-OI:
                 borderleaf2-OI:
