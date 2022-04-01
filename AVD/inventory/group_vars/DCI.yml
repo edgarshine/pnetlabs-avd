@@ -1,18 +1,3 @@
-fabric_name: DCI
-l3leaf:
-  defaults:
-    platform: vEOS-LAB
-  nodes:
-    borderleaf1-CAS:
-      mgmt_ip: 192.18.107.213/23
-    borderleaf2-CAS:
-      mgmt_ip: 192.18.107.214/23
-    borderleaf1-OI:
-      mgmt_ip: 192.18.107.223/23
-    borderleaf2-OI:
-      mgmt_ip: 192.18.107.224/23
-
-
 l3_edge:
   p2p_links_ip_pools:
     DCI_pool: 172.20.100.0/24
