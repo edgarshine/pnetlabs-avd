@@ -70,3 +70,19 @@ all:
                       ansible_host: 198.18.107.227
                     leaf4-OI:
                       ansible_host: 198.18.107.228
+
+        DCI:
+          children:
+            CAS_DCI:
+              vars:
+                type: l3_edge
+              hosts:
+                borderleaf1-CAS:
+                borderleaf2-CAS:
+            OI_DCI:
+              vars:
+                type: l3_edge
+              hosts:
+                borderleaf1-OI:
+                borderleaf2-OI:
+
