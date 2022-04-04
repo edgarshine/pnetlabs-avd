@@ -1,0 +1,47 @@
+---
+CVP_DEVICES_INIT:
+  - fqdn: spine1-CAS
+    parentContainerName: Spines-CAS
+    configlets:
+      - 'spine1-CAS-BASE'
+  - fqdn: spine2-CAS
+    parentContainerName: Spines-CAS
+    configlets:
+      - 'spine2-CAS-BASE'
+  - fqdn: leaf1-CAS
+    parentContainerName: Impar-CAS
+    configlets:
+      - 'leaf1-CAS-BASE'
+  - fqdn: leaf2-CAS
+    parentContainerName: Par-CAS
+    configlets:
+      - 'leaf2-CAS-BASE'
+  - fqdn: leaf3-CAS
+    parentContainerName: Impar-CAS
+    configlets:
+      - 'leaf3-CAS-BASE'
+  - fqdn: leaf4-CAS
+    parentContainerName: Par-CAS
+    configlets:
+      - 'leaf4-CAS-BASE'
+  - fqdn: borderleaf1-CAS
+    parentContainerName: Impar-CAS
+    configlets:
+      - 'borderleaf1-CAS-BASE'
+  - fqdn: borderleaf2-CAS
+    parentContainerName: Par-CAS
+    configlets:
+      - 'borderleaf2-CAS-BASE'
+
+CVP_CONTAINERS_INIT:
+  Spines-CAS:
+    parentContainerName: CAS
+  Par-CAS:
+    parentContainerName: Leafs-CAS
+  Impar-CAS:
+    parentContainerName: Leafs-CAS
+  Leafs-CAS:
+    parentContainerName: CAS
+  CAS:
+    parentContainerName: CAS
+
