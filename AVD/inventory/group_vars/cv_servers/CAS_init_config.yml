@@ -43,5 +43,5 @@ CVP_CONTAINERS_INIT:
   Leafs-CAS:
     parentContainerName: CAS
   CAS:
-    parentContainerName: CAS
+    parentContainerName: Tenant
 
