@@ -18,7 +18,7 @@ local_users:
 
 # Cloud Vision server information
 # cvp_instance_ip: 198.18.106.5 # register telemetry
-cvp_ingestauth_key: 'psne-lab'
+# cvp_ingestauth_key: 'psne-lab' # register telemetry ingest-key
 
 # OOB Management network default gateway.
 mgmt_gateway: 198.18.106.1
