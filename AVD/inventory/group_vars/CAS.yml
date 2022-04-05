@@ -52,33 +52,33 @@ l3leaf:
       nodes:
         borderleaf1-CAS:
           id: 1
-          mgmt_ip: 192.18.107.213/23
+          mgmt_ip: 198.18.107.213/23
           uplink_switch_interfaces: [Ethernet5, Ethernet5]
         borderleaf2-CAS:
           id: 2
-          mgmt_ip: 192.18.107.214/23
+          mgmt_ip: 198.18.107.214/23
           uplink_switch_interfaces: [Ethernet6, Ethernet6]
     CAS_POD1:
       bgp_as: 65111
       nodes:
         leaf1-CAS:
           id: 3
-          mgmt_ip: 192.18.107.215/23
+          mgmt_ip: 198.18.107.215/23
           uplink_switch_interfaces: [Ethernet1, Ethernet1]
         leaf2-CAS:
           id: 4
-          mgmt_ip: 192.18.107.216/23
+          mgmt_ip: 198.18.107.216/23
           uplink_switch_interfaces: [Ethernet2, Ethernet2]
     CAS_POD2:
       bgp_as: 65112
       nodes:
         leaf3-CAS:
           id: 5
-          mgmt_ip: 192.18.107.217/23
+          mgmt_ip: 198.18.107.217/23
           uplink_switch_interfaces: [Ethernet3, Ethernet3]
         leaf4-CAS:
           id: 6
-          mgmt_ip: 192.18.107.218/23
+          mgmt_ip: 198.18.107.218/23
           uplink_switch_interfaces: [Ethernet4, Ethernet4]
 
 # Disable update wait-for-convergence and update wait-for-install, which is not supported in vEOS-LAB.
