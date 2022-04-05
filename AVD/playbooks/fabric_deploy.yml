@@ -1,6 +1,6 @@
 ---
 - name: Manage Arista EOS EVPN/VXLAN Configuration
-  hosts: CAS_FABRIC
+  hosts: CAS
   connection: local
   gather_facts: false
   collections:
@@ -33,7 +33,7 @@
       import_role:
         name: arista.avd.eos_config_deploy_cvp
       vars:
-        container_root: 'CAS_FABRIC'
+        container_root: 'CAS'
         configlets_prefix: 'AVD'
         # device_filter: 'DC1'
         state: present

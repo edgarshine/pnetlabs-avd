@@ -15,7 +15,7 @@ all:
           cv_collection: v3
     DC:
       children:
-        CAS_FABRIC:
+        CAS:
           children:
             CAS_SPINES:
               vars:
@@ -49,7 +49,7 @@ all:
                       ansible_host: 198.18.107.217
                     leaf4-CAS:
                       ansible_host: 198.18.107.218
-        OI_FABRIC:
+        OI:
           children:
             OI_SPINE:
               vars:
