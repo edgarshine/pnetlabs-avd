@@ -34,14 +34,14 @@ CVP_DEVICES_INIT:
       - 'borderleaf2-CAS-BASE'
 
 CVP_CONTAINERS_INIT:
+  CAS:
+    parentContainerName: Tenant
   Spines-CAS:
+    parentContainerName: CAS
+  Leafs-CAS:
     parentContainerName: CAS
   Par-CAS:
     parentContainerName: Leafs-CAS
   Impar-CAS:
     parentContainerName: Leafs-CAS
-  Leafs-CAS:
-    parentContainerName: CAS
-  CAS:
-    parentContainerName: Tenant
 
