@@ -17,7 +17,7 @@ local_users:
     sha512_password: "$6$k2QzB8961/dFJf35$HLuhZBTypOM05zmGx99BAHI0.Zok8GUVm303zaZTJhQmp.cKq84un1e.cqztvC8ZFqRN6bCc.GkOknMBurXki."
 
 # Cloud Vision server information
-cvp_instance_ip: 198.18.106.5
+# cvp_instance_ip: 198.18.106.5 # register telemetry
 cvp_ingestauth_key: 'psne-lab'
 
 # OOB Management network default gateway.
