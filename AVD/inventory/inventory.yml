@@ -51,7 +51,7 @@ all:
                       ansible_host: 198.18.107.218
         OI:
           children:
-            OI_SPINE:
+            OI_SPINES:
               vars:
                 type: spine
               hosts:
