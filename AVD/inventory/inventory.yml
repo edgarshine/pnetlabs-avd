@@ -98,4 +98,11 @@ all:
               hosts:
                 borderleaf1-OI:
                 borderleaf2-OI:
+        CAS_TENANTS:
+          children:
+            CAS_LEAFS:
+            CAS_BORDERLEAFS:
+        CAS_SERVERS:
+          children:
+            CAS_LEAFS:
 
