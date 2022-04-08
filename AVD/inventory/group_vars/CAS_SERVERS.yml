@@ -1,6 +1,6 @@
 ---
 port_profiles:
-  ALL:
+  ALL_VLANS:
     mode: trunk
     vlans: "160,161,1110-1111,1120-1121,1130-1131,1140,1210-1211,1250"
   ACCESS:
@@ -18,7 +18,7 @@ servers:
         server_ports: [Eth0,Eth1]
         switch_ports: [Ethernet5,Ethernet5]
         switches: [leaf1-CAS,leaf2-CAS]
-        profile: ALL
+        profile: ALL_VLANS
         port_channel:
           state: present
           description: PortChannel1
@@ -30,8 +30,8 @@ servers:
         server_ports: [Eth0,Eth1]
         switch_ports: [Ethernet5,Ethernet5]
         switches: [leaf3-CAS,leaf4-CAS]
-        profile: ALL
-          port_channel:
+        profile: ALL_VLANS
+        port_channel:
           state: present
           description: PortChannel1
           mode: active
