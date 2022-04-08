@@ -20,6 +20,7 @@ servers:
         switches: [leaf1-CAS,leaf2-CAS]
         profile: ALL_VLANS
         port_channel:
+        # Po interface number follows the first interface port number
           state: present
           description: PortChannel
           mode: active
