@@ -21,7 +21,7 @@ servers:
         profile: ALL_VLANS
         port_channel:
           state: present
-          description: PortChannel1
+          description: PortChannel
           mode: active
   HOST2:
     rack: POD2
@@ -33,7 +33,7 @@ servers:
         profile: ALL_VLANS
         port_channel:
           state: present
-          description: PortChannel1
+          description: PortChannel
           mode: active
   BORDER1:
     rack: BORDER1
@@ -45,5 +45,5 @@ servers:
         profile: L3_NET
         port_channel:
           state: present
-          description: PortChannel1
+          description: PortChannel
           mode: active
