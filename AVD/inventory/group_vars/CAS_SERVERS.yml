@@ -11,7 +11,7 @@ port_profiles:
     vlans: "1110-1111,1120-1121,1130-1131,1140,1210-1211,1250"
 
 servers:
-  POD1:
+  HOST1:
     rack: POD1
     adapters:
       - type: nic
@@ -19,7 +19,11 @@ servers:
         switch_ports: [Ethernet5,Ethernet5]
         switches: [leaf1-CAS,leaf2-CAS]
         profile: ALL
-  POD2:
+        port_channel:
+          state: present
+          description: PortChannel1
+          mode: active
+  HOST2:
     rack: POD2
     adapters:
       - type: nic
@@ -27,6 +31,10 @@ servers:
         switch_ports: [Ethernet5,Ethernet5]
         switches: [leaf3-CAS,leaf4-CAS]
         profile: ALL
+          port_channel:
+          state: present
+          description: PortChannel1
+          mode: active
   BORDER1:
     rack: BORDER1
     adapters:
@@ -35,3 +43,7 @@ servers:
         switch_ports: [Ethernet6,Ethernet6]
         switches: [borderleaf1-CAS,borderleaf2-CAS]
         profile: L3_NET
+        port_channel:
+          state: present
+          description: PortChannel1
+          mode: active
