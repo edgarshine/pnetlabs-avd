@@ -32,6 +32,6 @@ servers:
     adapters:
       - type: nic
         server_ports: [Eth0,Eth1]
-        switch_ports: [Ethernet5,Ethernet5]
+        switch_ports: [Ethernet6,Ethernet6]
         switches: [borderleaf1-CAS,borderleaf2-CAS]
         profile: L3_NET
