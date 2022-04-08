@@ -32,7 +32,7 @@ tenants:
             enabled: true
             # ip_subnet: 10.1.30.0/24
             #< now ip_address_virtual and required to provide gateway ip as opposed to network.>
-            ip_address_virtual: 10.1.120.0/24
+            ip_address_virtual: 10.1.120.1/24
           1121:
             name: FrontEnt_WEB_Zone_2
             tags: [web]
@@ -45,7 +45,7 @@ tenants:
             name: FrontEnt_APP_Zone_1
             tags: [app, erp1]
             enabled: true
-            ip_address_virtual: 10.1.130.0/24
+            ip_address_virtual: 10.1.130.1/24
             
           1131:
             name: FrontEnd_APP_Zone_2
@@ -80,7 +80,7 @@ tenants:
             name: BackEnd_OP_Zone_1
             tags: [opzone]
             enabled: true
-            ip_address_virtual: 10.1.210.0/24
+            ip_address_virtual: 10.1.210.1/24
           1211:
             name: BackEnd_OP_Zone_2
             tags: [opzone]
