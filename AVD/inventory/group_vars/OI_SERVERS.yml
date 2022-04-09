@@ -1,0 +1,50 @@
+---
+port_profiles:
+  ALL_VLANS:
+    mode: trunk
+    vlans: "160,161,2110-2111,2120-2121,2130-2131,2140,2210-2211,2250"
+  ACCESS:
+    mode: access
+    vlans: "160"
+  L3_NET:
+    mode: trunk
+    vlans: "2110-2111,2120-2121,2130-2131,2140,2210-2211,2250"
+
+servers:
+  HOST1:
+    rack: POD1
+    adapters:
+      - type: nic
+        server_ports: [Eth0,Eth1]
+        switch_ports: [Ethernet5,Ethernet5]
+        switches: [leaf1-OI,leaf2-OI]
+        profile: ALL_VLANS
+        port_channel:
+        # Po interface number follows the first interface port number
+          state: present
+          description: PortChannel
+          mode: active
+  HOST2:
+    rack: POD2
+    adapters:
+      - type: nic
+        server_ports: [Eth0,Eth1]
+        switch_ports: [Ethernet5,Ethernet5]
+        switches: [leaf3-OI,leaf4-OI]
+        profile: ALL_VLANS
+        port_channel:
+          state: present
+          description: PortChannel
+          mode: active
+  BORDER1:
+    rack: BORDER1
+    adapters:
+      - type: nic
+        server_ports: [Eth0,Eth1]
+        switch_ports: [Ethernet6,Ethernet6]
+        switches: [borderleaf1-OI,borderleaf2-OI]
+        profile: L3_NET
+        port_channel:
+          state: present
+          description: PortChannel
+          mode: active
