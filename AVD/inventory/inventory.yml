@@ -105,4 +105,11 @@ all:
         CAS_SERVERS:
           children:
             CAS_LEAFS:
+        OI_TENANTS:
+          children:
+            OI_LEAFS:
+            OI_BORDERLEAFS:
+        OI_SERVERS:
+          children:
+            OI_LEAFS:
 
