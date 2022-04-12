@@ -44,10 +44,10 @@ servers:
         switch_ports: [Ethernet6]
         switches: [borderleaf1-CAS]
         profile: VLANS_INTERNA
-        # port_channel:
-        #   state: present
-        #   description: PortChannel Servico
-        #   mode: active
+        port_channel:
+          state: present
+          description: PortChannel Servico
+          mode: active
     rack: BORDER2
     adapters:
       - type: nic
