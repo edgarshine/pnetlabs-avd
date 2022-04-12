@@ -2,10 +2,10 @@
 port_profiles:
   VLANS_INTERNA:
     mode: trunk
-    vlans: "100,101,102,1110"
-  CLIENTE_ACCESS:
+    vlans: "101,102,1110"
+  VLAN_CLUSTER:
     mode: access
-    vlans: "1111"
+    vlans: "100"
   CLIENTE_TRUNK:
     mode: trunk
     vlans: "1111"
