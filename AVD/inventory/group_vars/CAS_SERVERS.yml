@@ -1,14 +1,14 @@
 ---
 port_profiles:
-  ALL_VLANS:
+  VLANS_INTERNA:
     mode: trunk
-    vlans: "160,161,1110-1111,1120-1121,1130-1131,1140,1210-1211,1250"
-  ACCESS:
+    vlans: "100,101,102,1110"
+  CLIENTE_ACCESS:
     mode: access
-    vlans: "160"
-  L3_NET:
+    vlans: "1111"
+  CLIENTE_TRUNK:
     mode: trunk
-    vlans: "1110-1111,1120-1121,1130-1131,1140,1210-1211,1250"
+    vlans: "1111"
 
 servers:
   HOST1:
@@ -17,8 +17,8 @@ servers:
       - type: nic
         server_ports: [Eth0,Eth1]
         switch_ports: [Ethernet5,Ethernet5]
-        switches: [leaf1-CAS,leaf2-CAS]
-        profile: ALL_VLANS
+        switches: [leaf1-OI,leaf2-OI]
+        profile: CLIENTE_TRUNK
         port_channel:
         # Po interface number follows the first interface port number
           state: present
@@ -30,11 +30,11 @@ servers:
       - type: nic
         server_ports: [Eth0,Eth1]
         switch_ports: [Ethernet5,Ethernet5]
-        switches: [leaf3-CAS,leaf4-CAS]
-        profile: ALL_VLANS
+        switches: [leaf3-OI,leaf4-OI]
+        profile: CLIENTE_TRUNK
         port_channel:
           state: present
-          description: PortChannel
+          description: PortChannel Acesso
           mode: active
   BORDER1:
     rack: BORDER1
@@ -42,9 +42,9 @@ servers:
       - type: nic
         server_ports: [Eth0,Eth1]
         switch_ports: [Ethernet6,Ethernet6]
-        switches: [borderleaf1-CAS,borderleaf2-CAS]
-        profile: L3_NET
+        switches: [borderleaf1-OI,borderleaf2-OI]
+        profile: VLANS_INTERNA
         port_channel:
           state: present
-          description: PortChannel
+          description: PortChannel Servico
           mode: active

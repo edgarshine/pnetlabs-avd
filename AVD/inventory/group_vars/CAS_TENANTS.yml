@@ -6,91 +6,64 @@ tenants:
   FrontEnd:
     mac_vrf_vni_base: 11000
     vrfs:
-      FrontEnd_OP_Zone:
+      FW_Outside:
         vrf_vni: 111
         vtep_diagnostic:
           loopback: 100
           loopback_ip_range: 10.255.1.0/24
         svis:
+          #FW_OUTSIDE_VLAN
           1110:
+            vni_override: 50110
             name: FrontEnd_OP_Zone_1
             tags: [opzone]
             enabled: true
             ip_address_virtual: 10.1.110.1/24
+          #CLIENT_OUTSIDE_VLAN
           1111:
             vni_override: 50111
             name: FrontEnd_OP_Zone_2
             tags: [opzone]
             enabled: true
             ip_address_virtual: 10.1.111.1/24
-      FrontEnd_WEB_Zone:
-        vrf_vni: 112
-        svis:
-          1120:
-            name: FrontEnd_WEB_Zone_1
-            tags: [web, erp1]
-            enabled: true
-            # ip_subnet: 10.1.30.0/24
-            #< now ip_address_virtual and required to provide gateway ip as opposed to network.>
-            ip_address_virtual: 10.1.120.1/24
-          1121:
-            name: FrontEnt_WEB_Zone_2
-            tags: [web]
-            enabled: true
-            ip_address_virtual: 10.1.121.1/24
-      FrontEnd_APP_Zone:
-        vrf_vni: 113
-        svis:
-          1130:
-            name: FrontEnt_APP_Zone_1
-            tags: [app, erp1]
-            enabled: true
-            ip_address_virtual: 10.1.130.1/24
-            
-          1131:
-            name: FrontEnd_APP_Zone_2
-            tags: [app]
-            enabled: true
-            ip_address_virtual: 10.1.131.254/24
-      FrontEnd_WAN_Zone:
-        vrf_vni: 114
-        svis:
-          1140:
-            name: FrontEnd_WAN_Zone_1
-            tags: [wan]
-            enabled: true
-            ip_address_virtual: 10.1.140.1/24
     l2vlans:
-      160:
-        vni_override: 55160
-        name: FrontEnd_VMOTION
-        tags: [vmotion]
-      161:
-        name: FrontEnd_NFS
-        tags: [nfs]
-
+      # CLUSTER
+      100:
+        vni_override: 55100
+        name: FW_CLUSTER
+        tags: [cluster]
+      # INTERNA
+      101:
+        vni_override: 55101
+        name: FW_INTERNA
+        tags: [interna]
+      # SERVICO
+      102:
+        vni_override: 55102
+        name: FW_SERVICO
+        tags: [servico]
   # Tenant BackEnd Specific Information - VRFs / VLANs
-  BackEnd:
-    mac_vrf_vni_base: 12000
-    vrfs:
-      BackEnd_OP_Zone:
-        vrf_vni: 121
-        svis:
-          1210:
-            name: BackEnd_OP_Zone_1
-            tags: [opzone]
-            enabled: true
-            ip_address_virtual: 10.1.210.1/24
-          1211:
-            name: BackEnd_OP_Zone_2
-            tags: [opzone]
-            enabled: true
-            ip_address_virtual: 10.1.211.1/24
-      BackEnd_DB_Zone:
-        vrf_vni: 125
-        svis:
-          1250:
-            name: BackEnd_DB_Zone_1
-            tags: [db]
-            enabled: true
-            ip_address_virtual: 10.1.250.1/24
+  # BackEnd:
+  #   mac_vrf_vni_base: 12000
+  #   vrfs:
+  #     BackEnd_OP_Zone:
+  #       vrf_vni: 121
+  #       svis:
+  #         1210:
+  #           name: BackEnd_OP_Zone_1
+  #           tags: [opzone]
+  #           enabled: true
+  #           ip_address_virtual: 10.1.210.1/24
+  #         1211:
+  #           name: BackEnd_OP_Zone_2
+  #           tags: [opzone]
+  #           enabled: true
+  #           ip_address_virtual: 10.1.211.1/24
+  #     BackEnd_DB_Zone:
+  #       vrf_vni: 125
+  #       svis:
+  #         1250:
+  #           name: BackEnd_DB_Zone_1
+  #           tags: [db]
+  #           enabled: true
+  #           ip_address_virtual: 10.1.250.1/24
