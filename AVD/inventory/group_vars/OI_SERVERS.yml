@@ -2,10 +2,10 @@
 port_profiles:
   VLANS_INTERNA:
     mode: trunk
-    vlans: "100,101,102,1110"
-  CLIENTE_ACCESS:
+    vlans: "101,102,1110"
+  VLAN_CLUSTER:
     mode: access
-    vlans: "1111"
+    vlans: "100"
   CLIENTE_TRUNK:
     mode: trunk
     vlans: "1111"
@@ -40,11 +40,18 @@ servers:
     rack: BORDER1
     adapters:
       - type: nic
-        server_ports: [Eth0,Eth1]
-        switch_ports: [Ethernet6,Ethernet6]
-        switches: [borderleaf1-OI,borderleaf2-OI]
+        server_ports: [Eth1]
+        switch_ports: [Ethernet6]
+        switches: [borderleaf1-OI]
         profile: VLANS_INTERNA
-        port_channel:
-          state: present
-          description: PortChannel Servico
-          mode: active
+        # port_channel:
+        #   state: present
+        #   description: PortChannel Servico
+        #   mode: active
+    rack: BORDER2
+    adapters:
+      - type: nic
+        server_ports: [Eth1]
+        switch_ports: [Ethernet6]
+        switches: [borderleaf2-OI]
+        profile: VLAN_CLUSTER
