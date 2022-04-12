@@ -26,6 +26,51 @@ tenants:
             tags: [opzone]
             enabled: true
             ip_address_virtual: 10.1.111.1/24
+        static_routes:
+          - destination_address_prefix: 0.0.0.0/0
+            gateway: 10.1.110.254
+            # distance: < 1-255 >
+            # tag: < 0-4294967295 >
+            name: FW CLUSTER IP
+            # metric: < 0-4294967295 >
+            # interface: PortChannel6
+            nodes: [ borderleaf1-OI, borderleaf2-OI]
+
+        # # Non-selectively enabling or disabling redistribute static inside the VRF | Optional.
+        # redistribute_static: < true | false >
+
+        # Dictionary of BGP peer definitions | Optional.
+        # This will configure BGP neighbors inside the tenant VRF for peering with external devices.
+        # The configured peer will automatically be activated for ipv4 or ipv6 address family based on the ip address.
+        # Note, only ipv4 and ipv6 address families are currently supported in eos_designs.
+        # For other address families, use custom_structured configuration with eos_cli_config_gen.
+        # bgp_peers:
+        #   < IPv4_address or IPv6_address >:
+        #     remote_as: < remote ASN >
+        #     description: < description >
+        #     password: < encrypted password >
+        #     send_community: < standard | extended | large | all >
+        #     next_hop_self: < true | false >
+        #     timers: < keepalive_hold_timer_values >
+        #     maximum_routes: < 0-4294967294 >
+        #     default_originate:
+        #       always: < true | false >
+        #     update_source: < interface >
+        #     ebgp_multihop: < 1-255 >
+        #     # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
+        #     nodes: [ < node_1 >, < node_2> ]
+        #     # Next hop settings can be either ipv4 or ipv6 for one neighbor, this will be applied by a uniquely generated route-map per neighbor.
+        #     # Next hop takes precedence over route_map_out.
+        #     set_ipv4_next_hop: < IPv4_address >
+        #     set_ipv6_next_hop: < IPv6_address >
+        #     route_map_out: < route-map name >
+        #     route_map_in: < route-map name >
+        #     prefix_list_in: < prefix_list_name >
+        #     prefix_list_out: < prefix_list_name >
+        #     local_as: < local BGP ASN >
+        #     weight: < 0-65535>
+        #     bfd: < true | false >
+
     l2vlans:
       # CLUSTER
       100:
