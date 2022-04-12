@@ -36,7 +36,7 @@ servers:
           state: present
           description: PortChannel Acesso
           mode: active
-  BORDER1:
+  FW_CLIENTE:
     rack: BORDER1
     adapters:
       - type: nic
@@ -48,6 +48,7 @@ servers:
         #   state: present
         #   description: PortChannel Servico
         #   mode: active
+  FW_INTERNO:
     rack: BORDER2
     adapters:
       - type: nic
