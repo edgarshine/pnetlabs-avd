@@ -6,6 +6,12 @@ port_profiles:
   VLAN_CLUSTER:
     mode: access
     vlans: "100"
+  VLAN_LB_VIP:
+    mode: trunk
+    vlans: "101,102"
+  VLAN_LB_RIP:
+    mode: access
+    vlans: "102"
   CLIENTE_TRUNK:
     mode: trunk
     vlans: "1111"
@@ -56,3 +62,19 @@ servers:
         switch_ports: [Ethernet6]
         switches: [borderleaf2-CAS]
         profile: VLAN_CLUSTER
+  SLB_VIP:
+    rack: POD2
+    adapters:
+      - type: nic
+        server_ports: [Eth1]
+        switch_ports: [Ethernet6]
+        switches: [leaf1-CAS]
+        profile: VLAN_LB_VIP
+  SLB_RIP:
+    rack: POD2
+    adapters:
+      - type: nic
+        server_ports: [Eth1]
+        switch_ports: [Ethernet6]
+        switches: [leaf3-CAS]
+        profile: VLAN_LB_RIP
