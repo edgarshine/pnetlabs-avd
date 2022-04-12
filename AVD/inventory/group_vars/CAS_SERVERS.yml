@@ -40,7 +40,7 @@ servers:
     rack: BORDER1
     adapters:
       - type: nic
-        server_ports: [Eth1]
+        server_ports: [Eth0]
         switch_ports: [Ethernet6]
         switches: [borderleaf1-CAS]
         profile: VLANS_INTERNA
