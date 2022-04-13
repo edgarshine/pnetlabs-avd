@@ -10,25 +10,27 @@ spine:
     # Overlay loopback IP and same pool can be assigned to both spine and l3leaf switches
     # If same loopback pool is defined for both spine and l3leaf,
     # < loopback_ipv4_offset > must be set in either one of the node_types
-  nodes:
+  node_groups:
     CAS_SPINES:
       bgp_as: 65100
       loopback_ipv4_pool: 172.31.210.0/24
-      spine1-CAS:
-        id: 1
-        mgmt_ip: 198.18.107.211/23
-      spine2-CAS:
-        id: 2
-        mgmt_ip: 198.18.107.212/23
+      nodes: 
+        spine1-CAS:
+          id: 1
+          mgmt_ip: 198.18.107.211/23
+        spine2-CAS:
+          id: 2
+          mgmt_ip: 198.18.107.212/23
     OI_SPINES:
       bgp_as: 65200
       loopback_ipv4_pool: 172.31.220.0/24
-      spine1-OI:
-        id: 3
-        mgmt_ip: 198.18.107.221/23
-      spine2-OI:
-        id: 4
-        mgmt_ip: 198.18.107.222/23
+      nodes:
+        spine1-OI:
+          id: 3
+          mgmt_ip: 198.18.107.221/23
+        spine2-OI:
+          id: 4
+          mgmt_ip: 198.18.107.222/23
 
 l3leaf:
   defaults:
@@ -59,46 +61,44 @@ l3leaf:
       # total spines + total leafs switches
       mlag_peer_ipv4_pool: 10.255.252.0/24
       mlag_peer_l3_ipv4_pool: 10.255.251.0/24
-      CAS_BORDERLEAFS:
-        bgp_as: 65110
-        nodes:
-          borderleaf1-CAS:
-            id: 1
-            mgmt_ip: 198.18.107.213/23
-            # evpn_route_servers: [spine1-CAS,spine2-CAS,borderleaf1-OI]
-            # uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
-            # uplink_switch_interfaces: [Ethernet5, Ethernet5, Ethernet5]
-            evpn_route_servers: [spine1-CAS,spine2-CAS]
-            uplink_interfaces: [Ethernet3, Ethernet4]
-            uplink_switch_interfaces: [Ethernet5, Ethernet5]
-          borderleaf2-CAS:
-            id: 2
-            mgmt_ip: 198.18.107.214/23
-            evpn_route_servers: [spine1-CAS,spine2-CAS,borderleaf2-OI]
-            uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
-            uplink_switch_interfaces: [Ethernet6, Ethernet6, Ethernet5]
-      CAS_POD1:
-        bgp_as: 65111
-        nodes:
-          leaf1-CAS:
-            id: 3
-            mgmt_ip: 198.18.107.215/23
-            uplink_switch_interfaces: [Ethernet1, Ethernet1]
-          leaf2-CAS:
-            id: 4
-            mgmt_ip: 198.18.107.216/23
-            uplink_switch_interfaces: [Ethernet2, Ethernet2]
-      CAS_POD2:
-        bgp_as: 65112
-        nodes:
-          leaf3-CAS:
-            id: 5
-            mgmt_ip: 198.18.107.217/23
-            uplink_switch_interfaces: [Ethernet3, Ethernet3]
-          leaf4-CAS:
-            id: 6
-            mgmt_ip: 198.18.107.218/23
-            uplink_switch_interfaces: [Ethernet4, Ethernet4]
+      nodes:
+        borderleaf1-CAS:
+          id: 1
+          mgmt_ip: 198.18.107.213/23
+          bgp_as: 65110
+          # evpn_route_servers: [spine1-CAS,spine2-CAS,borderleaf1-OI]
+          # uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
+          # uplink_switch_interfaces: [Ethernet5, Ethernet5, Ethernet5]
+          evpn_route_servers: [spine1-CAS,spine2-CAS]
+          uplink_interfaces: [Ethernet3, Ethernet4]
+          uplink_switch_interfaces: [Ethernet5, Ethernet5]
+        borderleaf2-CAS:
+          id: 2
+          mgmt_ip: 198.18.107.214/23
+          bgp_as: 65110
+          evpn_route_servers: [spine1-CAS,spine2-CAS,borderleaf2-OI]
+          uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
+          uplink_switch_interfaces: [Ethernet6, Ethernet6, Ethernet5]
+        leaf1-CAS:
+          id: 3
+          mgmt_ip: 198.18.107.215/23
+          bgp_as: 65111
+          uplink_switch_interfaces: [Ethernet1, Ethernet1]
+        leaf2-CAS:
+          id: 4
+          mgmt_ip: 198.18.107.216/23
+          bgp_as: 65111
+          uplink_switch_interfaces: [Ethernet2, Ethernet2]
+        leaf3-CAS:
+          id: 5
+          mgmt_ip: 198.18.107.217/23
+          bgp_as: 65112
+          uplink_switch_interfaces: [Ethernet3, Ethernet3]
+        leaf4-CAS:
+          id: 6
+          mgmt_ip: 198.18.107.218/23
+          bgp_as: 65112
+          uplink_switch_interfaces: [Ethernet4, Ethernet4]
     # OI:
     #   bgp_as: 65200
     #   # virtual router mac for VNIs assigned to Leaf switches
