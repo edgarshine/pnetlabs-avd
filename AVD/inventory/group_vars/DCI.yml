@@ -29,6 +29,9 @@ l3_edge:
       # AS Numbers for BGP | Required with bgp peering
       as: [ 65110 , 65210 ]
 
+      evpn_route_servers: [borderleaf1-OI]
+      vtep_loopback_ipv4_pool: 172.29.211.0/24
+      loopback_ipv4_pool: 172.28.211.0/24
       # Add this interface to underlay routing protocol | Optional
       #include_in_underlay_protocol: < true | false | default -> false >
       include_in_underlay_protocol: true
