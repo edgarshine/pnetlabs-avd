@@ -10,27 +10,27 @@ spine:
     # Overlay loopback IP and same pool can be assigned to both spine and l3leaf switches
     # If same loopback pool is defined for both spine and l3leaf,
     # < loopback_ipv4_offset > must be set in either one of the node_types
-  node_groups:
-    CAS_SPINES:
+  nodes: 
+    spine1-CAS:
       bgp_as: 65100
       loopback_ipv4_pool: 172.31.210.0/24
-      nodes: 
-        spine1-CAS:
-          id: 1
-          mgmt_ip: 198.18.107.211/23
-        spine2-CAS:
-          id: 2
-          mgmt_ip: 198.18.107.212/23
-    OI_SPINES:
+      id: 1
+      mgmt_ip: 198.18.107.211/23
+    spine2-CAS:
+      bgp_as: 65100
+      loopback_ipv4_pool: 172.31.210.0/24
+      id: 2
+      mgmt_ip: 198.18.107.212/23
+    spine1-OI:
       bgp_as: 65200
       loopback_ipv4_pool: 172.31.220.0/24
-      nodes:
-        spine1-OI:
-          id: 1
-          mgmt_ip: 198.18.107.221/23
-        spine2-OI:
-          id: 2
-          mgmt_ip: 198.18.107.222/23
+      id: 1
+      mgmt_ip: 198.18.107.221/23
+    spine2-OI:
+      bgp_as: 65200
+      loopback_ipv4_pool: 172.31.220.0/24
+      id: 2
+      mgmt_ip: 198.18.107.222/23
 
 l3leaf:
   defaults:
