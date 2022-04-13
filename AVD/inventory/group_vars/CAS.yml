@@ -19,12 +19,6 @@ spine:
     spine2-CAS:
       id: 2
       mgmt_ip: 198.18.107.212/23
-    borderleaf1-OI:
-      id: 3
-      mgmt_ip: 198.18.107.223/23
-    borderleaf2-OI:
-      id: 4
-      mgmt_ip: 198.18.107.224/23
 
 l3leaf:
   defaults:
@@ -52,6 +46,7 @@ l3leaf:
     mlag_peer_l3_ipv4_pool: 10.255.251.0/24
     spanning_tree_priority: 4096
     spanning_tree_mode: mstp
+    evpn_route_servers: [DCI]
   node_groups:
     CAS_BORDERLEAFS:
       bgp_as: 65110
