@@ -86,6 +86,8 @@ l3leaf:
         borderleaf1-CAS:
           id: 7
           mgmt_ip: 198.18.107.213/23
+          uplink_switches: [borderleaf1-OI]
+          uplink_interfaces: [Ethernet5]
           evpn_route_servers: [borderleaf1-OI]
           uplink_switch_interfaces: [Ethernet5]
         borderleaf2-CAS:
