@@ -1,6 +1,6 @@
 ---
 - name: Manage Arista EOS EVPN/VXLAN Configuration
-  hosts: CAS
+  hosts: DC
   connection: local
   gather_facts: false
   collections:
