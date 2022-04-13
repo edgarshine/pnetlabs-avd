@@ -120,13 +120,13 @@ l3leaf:
         bgp_as: 65210
         nodes:
           borderleaf1-OI:
-            id: 7
+            id: 1
             mgmt_ip: 198.18.107.223/23
             evpn_route_servers: [spine1-OI,spine2-OI,borderleaf1-CAS]
             uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
             uplink_switch_interfaces: [Ethernet5, Ethernet5, Ethernet5]
           borderleaf2-OI:
-            id: 8
+            id: 2
             mgmt_ip: 198.18.107.224/23
             evpn_route_servers: [spine1-OI,spine2-OI,borderleaf1-CAS]
             uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
@@ -135,22 +135,22 @@ l3leaf:
         bgp_as: 65211
         nodes:
           leaf1-OI:
-            id: 9
+            id: 3
             mgmt_ip: 198.18.107.225/23
             uplink_switch_interfaces: [Ethernet1, Ethernet1]
           leaf2-OI:
-            id: 10
+            id: 4
             mgmt_ip: 198.18.107.226/23
             uplink_switch_interfaces: [Ethernet2, Ethernet2]
       OI_POD2:
         bgp_as: 65212
         nodes:
           leaf3-OI:
-            id: 11
+            id: 5
             mgmt_ip: 198.18.107.227/23
             uplink_switch_interfaces: [Ethernet3, Ethernet3]
           leaf4-OI:
-            id: 12
+            id: 6
             mgmt_ip: 198.18.107.228/23
             uplink_switch_interfaces: [Ethernet4, Ethernet4]
 
