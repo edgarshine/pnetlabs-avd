@@ -10,27 +10,27 @@ spine:
     # Overlay loopback IP and same pool can be assigned to both spine and l3leaf switches
     # If same loopback pool is defined for both spine and l3leaf,
     # < loopback_ipv4_offset > must be set in either one of the node_types
-  nodes: 
-    spine1-CAS:
+  node_groups:
+    CAS_SPINES:
       bgp_as: 65100
       loopback_ipv4_pool: 172.31.210.0/24
-      id: 1
-      mgmt_ip: 198.18.107.211/23
-    spine2-CAS:
-      bgp_as: 65100
-      loopback_ipv4_pool: 172.31.210.0/24
-      id: 2
-      mgmt_ip: 198.18.107.212/23
-    spine1-OI:
+      nodes: 
+        spine1-CAS:
+          id: 1
+          mgmt_ip: 198.18.107.211/23
+        spine2-CAS:
+          id: 2
+          mgmt_ip: 198.18.107.212/23
+    OI_SPINES:
       bgp_as: 65200
       loopback_ipv4_pool: 172.31.220.0/24
-      id: 1
-      mgmt_ip: 198.18.107.221/23
-    spine2-OI:
-      bgp_as: 65200
-      loopback_ipv4_pool: 172.31.220.0/24
-      id: 2
-      mgmt_ip: 198.18.107.222/23
+      nodes:
+        spine1-OI:
+          id: 1
+          mgmt_ip: 198.18.107.221/23
+        spine2-OI:
+          id: 2
+          mgmt_ip: 198.18.107.222/23
 
 l3leaf:
   defaults:
@@ -42,7 +42,7 @@ l3leaf:
     spanning_tree_priority: 4096
     spanning_tree_mode: mstp
     uplink_ipv4_pool: 172.21.211.0/24
-    # uplink_switches: [spine1-CAS, spine2-CAS]
+    uplink_switches: [spine1-CAS, spine2-CAS]
     uplink_interfaces: [Ethernet3, Ethernet4]
     mlag_interfaces: [Ethernet1, Ethernet2]
     # mlag pair IP assignment - assign blocks - Assign range larger than
