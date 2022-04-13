@@ -71,7 +71,7 @@ l3leaf:
           borderleaf2-CAS:
             id: 2
             mgmt_ip: 198.18.107.214/23
-            evpn_route_servers: [spine1-CAS,spine2-CAS,borderleaf1-OI]
+            evpn_route_servers: [spine1-CAS,spine2-CAS,borderleaf2-OI]
             uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
             uplink_switch_interfaces: [Ethernet6, Ethernet6, Ethernet5]
       CAS_POD1:
@@ -128,7 +128,7 @@ l3leaf:
     #       borderleaf2-OI:
     #         id: 2
     #         mgmt_ip: 198.18.107.224/23
-    #         evpn_route_servers: [spine1-OI,spine2-OI,borderleaf1-CAS]
+    #         evpn_route_servers: [spine1-OI,spine2-OI,borderleaf2-CAS]
     #         uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
     #         uplink_switch_interfaces: [Ethernet6, Ethernet6, Ethernet5]
     #   OI_POD1:
