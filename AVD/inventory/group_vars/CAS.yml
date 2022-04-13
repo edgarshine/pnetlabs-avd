@@ -1,19 +1,6 @@
 ---
 # L3LS Fabric Values - update these values with caution,
 # SOME CHANGES COULD BE DISRUPTIVE.
-node_type_keys:
-  spine:
-    type: spine
-    default_evpn_role: server
-  l3leaf:
-    type: l3leaf
-    connected_endpoints: true
-    default_evpn_role: none
-    mlag_support: true
-    network_services:
-      l2: true
-      l3: true
-    vtep: true
 
 fabric_name: CAS
 
@@ -32,6 +19,12 @@ spine:
     spine2-CAS:
       id: 2
       mgmt_ip: 198.18.107.212/23
+    borderleaf1-OI:
+      id: 3
+      mgmt_ip: 198.18.107.223/23
+    borderleaf2-OI:
+      id: 4
+      mgmt_ip: 198.18.107.224/23
 
 l3leaf:
   defaults:
