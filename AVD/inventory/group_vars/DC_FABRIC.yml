@@ -265,7 +265,7 @@ l3leaf:
       # Point to Point Network Summary range, assigned as /31 for each
       # uplink interfaces
       # Assign range larger than total [spines * total potential leafs * 2]
-      # uplink_ipv4_pool: 172.21.221.0/24
+      uplink_ipv4_pool: 172.20.100.0/24
       # uplink_switches: [spine1-OI, spine2-OI]
       # uplink_interfaces: [Ethernet3, Ethernet4]
       # mlag_interfaces: [Ethernet1, Ethernet2]
@@ -279,6 +279,7 @@ l3leaf:
           mgmt_ip: 198.18.107.213/23
           bgp_as: 65110
           evpn_route_servers: [borderleaf1-OI]
+          uplink_switches: [borderleaf1-OI]
           uplink_interfaces: [Ethernet5]
           uplink_switch_interfaces: [Ethernet5]
         borderleaf2-CAS:
@@ -286,6 +287,7 @@ l3leaf:
           mgmt_ip: 198.18.107.214/23
           bgp_as: 65110
           evpn_route_servers: [borderleaf2-OI]
+          uplink_switches: [borderleaf2-OI]
           uplink_interfaces: [Ethernet5]
           uplink_switch_interfaces: [Ethernet5]
         borderleaf1-OI:
@@ -293,6 +295,7 @@ l3leaf:
           mgmt_ip: 198.18.107.223/23
           bgp_as: 65210
           evpn_route_servers: [borderleaf1-CAS]
+          uplink_switches: [borderleaf1-CAS]
           uplink_interfaces: [Ethernet5]
           uplink_switch_interfaces: [Ethernet5]
         borderleaf2-OI:
@@ -300,6 +303,7 @@ l3leaf:
           mgmt_ip: 198.18.107.224/23
           bgp_as: 65210
           evpn_route_servers: [borderleaf2-CAS]
+          uplink_switches: [borderleaf2-CAS]
           uplink_interfaces: [Ethernet5]
           uplink_switch_interfaces: [Ethernet5]
 

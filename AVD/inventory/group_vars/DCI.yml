@@ -1,59 +1,59 @@
-l3_edge:
-  p2p_links_ip_pools:
-    DCI_pool: 172.20.100.0/24
-#  p2p_links_profiles:
-#    < p2p_profile_name >:
-#      < any variable supported under p2p_links can be inherited from a profile >
-  p2p_links:
-      # Unique id per subnet_summary. Used to calculate ip addresses | Required with ip_pool
-    - id: 1
+# l3_edge:
+#   p2p_links_ip_pools:
+#     DCI_pool: 172.20.100.0/24
+# #  p2p_links_profiles:
+# #    < p2p_profile_name >:
+# #      < any variable supported under p2p_links can be inherited from a profile >
+#   p2p_links:
+#       # Unique id per subnet_summary. Used to calculate ip addresses | Required with ip_pool
+#     - id: 1
 
-      # Speed | Optional
-#      speed: < speed | auto speed | forced speed >
+#       # Speed | Optional
+# #      speed: < speed | auto speed | forced speed >
 
-      # IP Pool defined under p2p_links_ip_pools. A /31 will be taken from the pool per P2P link | Optional (Requires ip_pool or subnet or ip)
-      ip_pool: DCI_pool
+#       # IP Pool defined under p2p_links_ip_pools. A /31 will be taken from the pool per P2P link | Optional (Requires ip_pool or subnet or ip)
+#       ip_pool: DCI_pool
 
-      # Subnet used on this P2P link | Optional (Requires ip_pool or subnet or ip)
-#      subnet: < IPv4_address/Mask >
+#       # Subnet used on this P2P link | Optional (Requires ip_pool or subnet or ip)
+# #      subnet: < IPv4_address/Mask >
 
-      # Specific IP addresses used on this P2P link | Optional (Requires ip_pool or subnet or ip)
-#      ip: [ < node_a IPv4_address/Mask >, < node_b IPv4_address/Mask > ]
+#       # Specific IP addresses used on this P2P link | Optional (Requires ip_pool or subnet or ip)
+# #      ip: [ < node_a IPv4_address/Mask >, < node_b IPv4_address/Mask > ]
 
-      # Nodes where this link should be configured | Required
-      nodes: [ borderleaf1-CAS, borderleaf1-OI ]
+#       # Nodes where this link should be configured | Required
+#       nodes: [ borderleaf1-CAS, borderleaf1-OI ]
 
-      # Interfaces where this link should be configured | Required
-      interfaces: [ Ethernet5 , Ethernet5 ]
+#       # Interfaces where this link should be configured | Required
+#       interfaces: [ Ethernet5 , Ethernet5 ]
 
-      # AS Numbers for BGP | Required with bgp peering
-      as: [ 65110 , 65210 ]
+#       # AS Numbers for BGP | Required with bgp peering
+#       as: [ 65110 , 65210 ]
 
-      # Add this interface to underlay routing protocol | Optional
-      #include_in_underlay_protocol: < true | false | default -> false >
-      include_in_underlay_protocol: true
+#       # Add this interface to underlay routing protocol | Optional
+#       #include_in_underlay_protocol: < true | false | default -> false >
+#       include_in_underlay_protocol: true
 
-      # MTU for this P2P link | Optional
-#      mtu: < number | default -> same as p2p_uplinks_mtu >
+#       # MTU for this P2P link | Optional
+# #      mtu: < number | default -> same as p2p_uplinks_mtu >
 
-      # Enable BFD (only considered for BGP) | Optional
-#      bfd: < true | false | default -> false >
+#       # Enable BFD (only considered for BGP) | Optional
+# #      bfd: < true | false | default -> false >
 
-      # Enable PTP | Optional
-#      ptp_enable: < true | false | default -> false >
+#       # Enable PTP | Optional
+# #      ptp_enable: < true | false | default -> false >
 
-      # QOS Service Profile | Optional
-#      qos_profile: < qos_profile_name >
+#       # QOS Service Profile | Optional
+# #      qos_profile: < qos_profile_name >
 
-      # MAC Security Profile | Optional
-#      macsec_profile: < macsec_profile_name >
+#       # MAC Security Profile | Optional
+# #      macsec_profile: < macsec_profile_name >
 
-      # Profile defined under p2p_profiles | Optional
-#      profile: < p2p_profile_name >
+#       # Profile defined under p2p_profiles | Optional
+# #      profile: < p2p_profile_name >
 
-    - id: 2
-      ip_pool: DCI_pool
-      nodes: [ borderleaf2-CAS, borderleaf2-OI ]
-      interfaces: [ Ethernet5 , Ethernet5 ]
-      as: [ 65110 , 65210 ]
-      include_in_underlay_protocol: true
+#     - id: 2
+#       ip_pool: DCI_pool
+#       nodes: [ borderleaf2-CAS, borderleaf2-OI ]
+#       interfaces: [ Ethernet5 , Ethernet5 ]
+#       as: [ 65110 , 65210 ]
+#       include_in_underlay_protocol: true
