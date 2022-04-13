@@ -50,7 +50,7 @@ l3leaf:
     mlag_peer_ipv4_pool: 10.255.252.0/24
     mlag_peer_l3_ipv4_pool: 10.255.251.0/24
   node_groups:
-    CAS:
+    CAS_BORDERLEAFS:
       bgp_as: 65100
       virtual_router_mac_address: 00:1c:73:00:dc:01
       # VTEP VXLAN Tunnel source loopback IP for leaf switches, assigned in /32s
@@ -84,6 +84,26 @@ l3leaf:
           evpn_route_servers: [spine1-CAS,spine2-CAS,borderleaf2-OI]
           uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
           uplink_switch_interfaces: [Ethernet6, Ethernet6, Ethernet5]
+    CAS_LEAFS:
+      bgp_as: 65100
+      virtual_router_mac_address: 00:1c:73:00:dc:01
+      # VTEP VXLAN Tunnel source loopback IP for leaf switches, assigned in /32s
+      # Assign range larger than total leaf switches
+      vtep_loopback_ipv4_pool: 172.31.211.0/24
+      evpn_route_servers: [spine1-CAS,spine2-CAS]
+      loopback_ipv4_pool: 172.30.211.0/24
+      # Point to Point Network Summary range, assigned as /31 for each
+      # uplink interfaces
+      # Assign range larger than total [spines * total potential leafs * 2]
+      uplink_ipv4_pool: 172.21.211.0/24
+      # uplink_switches: [spine1-CAS, spine2-CAS]
+      uplink_interfaces: [Ethernet3, Ethernet4]
+      mlag_interfaces: [Ethernet1, Ethernet2]
+      # mlag pair IP assignment - assign blocks - Assign range larger than
+      # total spines + total leafs switches
+      mlag_peer_ipv4_pool: 10.255.252.0/24
+      mlag_peer_l3_ipv4_pool: 10.255.251.0/24
+      nodes:
         leaf1-CAS:
           id: 3
           mgmt_ip: 198.18.107.215/23
