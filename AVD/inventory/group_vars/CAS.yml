@@ -46,7 +46,6 @@ l3leaf:
     mlag_peer_l3_ipv4_pool: 10.255.251.0/24
     spanning_tree_priority: 4096
     spanning_tree_mode: mstp
-    evpn_route_servers: [DCI]
   node_groups:
     CAS_BORDERLEAFS:
       bgp_as: 65110
@@ -83,6 +82,7 @@ l3leaf:
           uplink_switch_interfaces: [Ethernet4, Ethernet4]
     CAS_DCI:
       bgp_as: 65110
+      evpn_route_servers: [DCI]
       nodes:
         borderleaf1-CAS:
           id: 7
