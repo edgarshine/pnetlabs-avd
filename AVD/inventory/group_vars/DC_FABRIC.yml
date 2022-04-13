@@ -74,16 +74,16 @@ l3leaf:
           id: 1
           mgmt_ip: 198.18.107.213/23
           bgp_as: 65110
-          evpn_route_servers: [spine1-CAS,spine2-CAS,borderleaf1-OI]
-          uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
-          uplink_switch_interfaces: [Ethernet5, Ethernet5, Ethernet5]
+          evpn_route_servers: [spine1-CAS,spine2-CAS]
+          uplink_interfaces: [Ethernet3, Ethernet4]
+          uplink_switch_interfaces: [Ethernet5, Ethernet5]
         borderleaf2-CAS:
           id: 2
           mgmt_ip: 198.18.107.214/23
           bgp_as: 65110
-          evpn_route_servers: [spine1-CAS,spine2-CAS,borderleaf2-OI]
-          uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
-          uplink_switch_interfaces: [Ethernet6, Ethernet6, Ethernet5]
+          evpn_route_servers: [spine1-CAS,spine2-CAS]
+          uplink_interfaces: [Ethernet3, Ethernet4]
+          uplink_switch_interfaces: [Ethernet6, Ethernet6]
     CAS_POD1:
       bgp_as: 65100
       virtual_router_mac_address: 00:1c:73:00:dc:01
@@ -172,16 +172,16 @@ l3leaf:
           id: 1
           mgmt_ip: 198.18.107.223/23
           bgp_as: 65210
-          evpn_route_servers: [spine1-OI,spine2-OI,borderleaf1-CAS]
-          uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
-          uplink_switch_interfaces: [Ethernet5, Ethernet5, Ethernet5]
+          evpn_route_servers: [spine1-OI,spine2-OI]
+          uplink_interfaces: [Ethernet3, Ethernet4]
+          uplink_switch_interfaces: [Ethernet5, Ethernet5]
         borderleaf2-OI:
           id: 2
           mgmt_ip: 198.18.107.224/23
           bgp_as: 65210
-          evpn_route_servers: [spine1-OI,spine2-OI,borderleaf2-CAS]
-          uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
-          uplink_switch_interfaces: [Ethernet6, Ethernet6, Ethernet5]
+          evpn_route_servers: [spine1-OI,spine2-OI]
+          uplink_interfaces: [Ethernet3, Ethernet4]
+          uplink_switch_interfaces: [Ethernet6, Ethernet6]
     OI_POD1:
       bgp_as: 65200
       # virtual router mac for VNIs assigned to Leaf switches

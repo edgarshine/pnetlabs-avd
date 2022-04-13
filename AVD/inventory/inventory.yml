@@ -85,7 +85,6 @@ all:
                           ansible_host: 198.18.107.227
                         leaf4-OI:
                           ansible_host: 198.18.107.228
-
         DCI:
           vars:
             type: l3leaf
