@@ -75,6 +75,7 @@ l3leaf:
           mgmt_ip: 198.18.107.213/23
           bgp_as: 65110
           evpn_route_servers: [spine1-CAS,spine2-CAS,borderleaf1-OI]
+          uplink_switches: [spine1-CAS, spine2-CAS,borderleaf1-OI]
           uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
           uplink_switch_interfaces: [Ethernet5, Ethernet5, Ethernet5]
         borderleaf2-CAS:
