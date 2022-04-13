@@ -42,7 +42,7 @@ l3leaf:
     spanning_tree_priority: 4096
     spanning_tree_mode: mstp
     uplink_ipv4_pool: 172.21.211.0/24
-    uplink_switches: [spine1-CAS, spine2-CAS]
+    # uplink_switches: [spine1-CAS, spine2-CAS]
     uplink_interfaces: [Ethernet3, Ethernet4]
     mlag_interfaces: [Ethernet1, Ethernet2]
     # mlag pair IP assignment - assign blocks - Assign range larger than
@@ -62,7 +62,7 @@ l3leaf:
       # uplink interfaces
       # Assign range larger than total [spines * total potential leafs * 2]
       uplink_ipv4_pool: 172.21.211.0/24
-      # uplink_switches: [spine1-CAS, spine2-CAS]
+      uplink_switches: [spine1-CAS, spine2-CAS]
       uplink_interfaces: [Ethernet3, Ethernet4]
       mlag_interfaces: [Ethernet1, Ethernet2]
       # mlag pair IP assignment - assign blocks - Assign range larger than
@@ -96,7 +96,7 @@ l3leaf:
       # uplink interfaces
       # Assign range larger than total [spines * total potential leafs * 2]
       uplink_ipv4_pool: 172.21.211.0/24
-      # uplink_switches: [spine1-CAS, spine2-CAS]
+      uplink_switches: [spine1-CAS, spine2-CAS]
       uplink_interfaces: [Ethernet3, Ethernet4]
       mlag_interfaces: [Ethernet1, Ethernet2]
       # mlag pair IP assignment - assign blocks - Assign range larger than
@@ -126,7 +126,7 @@ l3leaf:
       # uplink interfaces
       # Assign range larger than total [spines * total potential leafs * 2]
       uplink_ipv4_pool: 172.21.211.0/24
-      # uplink_switches: [spine1-CAS, spine2-CAS]
+      uplink_switches: [spine1-CAS, spine2-CAS]
       uplink_interfaces: [Ethernet3, Ethernet4]
       mlag_interfaces: [Ethernet1, Ethernet2]
       # mlag pair IP assignment - assign blocks - Assign range larger than
@@ -144,7 +144,7 @@ l3leaf:
           mgmt_ip: 198.18.107.218/23
           bgp_as: 65112
           uplink_switch_interfaces: [Ethernet4, Ethernet4]
-    OI:
+    OI_BORDERLEAFS:
       bgp_as: 65200
       # virtual router mac for VNIs assigned to Leaf switches
       # format: xx:xx:xx:xx:xx:xx
@@ -160,7 +160,7 @@ l3leaf:
       # uplink interfaces
       # Assign range larger than total [spines * total potential leafs * 2]
       uplink_ipv4_pool: 172.21.221.0/24
-      # uplink_switches: [spine1-CAS, spine2-CAS]
+      uplink_switches: [spine1-OI, spine2-OI]
       uplink_interfaces: [Ethernet3, Ethernet4]
       mlag_interfaces: [Ethernet1, Ethernet2]
       # mlag pair IP assignment - assign blocks - Assign range larger than
@@ -182,6 +182,30 @@ l3leaf:
           evpn_route_servers: [spine1-OI,spine2-OI,borderleaf2-CAS]
           uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
           uplink_switch_interfaces: [Ethernet6, Ethernet6, Ethernet5]
+    OI_POD1:
+      bgp_as: 65200
+      # virtual router mac for VNIs assigned to Leaf switches
+      # format: xx:xx:xx:xx:xx:xx
+      virtual_router_mac_address: 00:1c:73:00:dc:02
+      # VTEP VXLAN Tunnel source loopback IP for leaf switches, assigned in /32s
+      # Assign range larger than total leaf switches
+      vtep_loopback_ipv4_pool: 172.31.221.0/24
+      evpn_route_servers: [spine1-OI,spine2-OI]
+      loopback_ipv4_pool: 172.30.221.0/24
+      # Offset must be >= number of spines
+      loopback_ipv4_offset: 2
+      # Point to Point Network Summary range, assigned as /31 for each
+      # uplink interfaces
+      # Assign range larger than total [spines * total potential leafs * 2]
+      uplink_ipv4_pool: 172.21.221.0/24
+      uplink_switches: [spine1-OI, spine2-OI]
+      uplink_interfaces: [Ethernet3, Ethernet4]
+      mlag_interfaces: [Ethernet1, Ethernet2]
+      # mlag pair IP assignment - assign blocks - Assign range larger than
+      # total spines + total leafs switches
+      mlag_peer_ipv4_pool: 10.255.248.0/24
+      mlag_peer_l3_ipv4_pool: 10.255.247.0/24
+      nodes:
         leaf1-OI:
           id: 3
           mgmt_ip: 198.18.107.225/23
@@ -192,6 +216,30 @@ l3leaf:
           mgmt_ip: 198.18.107.226/23
           bgp_as: 65211
           uplink_switch_interfaces: [Ethernet2, Ethernet2]
+    OI_POD2:
+      bgp_as: 65200
+      # virtual router mac for VNIs assigned to Leaf switches
+      # format: xx:xx:xx:xx:xx:xx
+      virtual_router_mac_address: 00:1c:73:00:dc:02
+      # VTEP VXLAN Tunnel source loopback IP for leaf switches, assigned in /32s
+      # Assign range larger than total leaf switches
+      vtep_loopback_ipv4_pool: 172.31.221.0/24
+      evpn_route_servers: [spine1-OI,spine2-OI]
+      loopback_ipv4_pool: 172.30.221.0/24
+      # Offset must be >= number of spines
+      loopback_ipv4_offset: 2
+      # Point to Point Network Summary range, assigned as /31 for each
+      # uplink interfaces
+      # Assign range larger than total [spines * total potential leafs * 2]
+      uplink_ipv4_pool: 172.21.221.0/24
+      uplink_switches: [spine1-OI, spine2-OI]
+      uplink_interfaces: [Ethernet3, Ethernet4]
+      mlag_interfaces: [Ethernet1, Ethernet2]
+      # mlag pair IP assignment - assign blocks - Assign range larger than
+      # total spines + total leafs switches
+      mlag_peer_ipv4_pool: 10.255.248.0/24
+      mlag_peer_l3_ipv4_pool: 10.255.247.0/24
+      nodes:
         leaf3-OI:
           id: 5
           mgmt_ip: 198.18.107.227/23
