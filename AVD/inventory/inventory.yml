@@ -13,76 +13,78 @@ all:
           ansible_httpapi_use_ssl: true
           ansible_httpapi_validate_certs: false
           cv_collection: v3
-    DC:
+    DC_FABRIC:
       children:
-        CAS:
+        DC:
           children:
-            CAS_SPINES:
-              vars:
-                type: spine
-              hosts:
-                spine1-CAS:
-                  ansible_host: 198.18.107.211
-                spine2-CAS:
-                  ansible_host: 198.18.107.212
-            CAS_BORDERLEAFS:
-              vars:
-                type: l3leaf
-              hosts:
-                borderleaf1-CAS:
-                  ansible_host: 198.18.107.213
-                borderleaf2-CAS:
-                  ansible_host: 198.18.107.214
-            CAS_LEAFS:
-              vars:
-                type: l3leaf
+            CAS:
               children:
-                CAS_POD1:
+                CAS_SPINES:
+                  vars:
+                    type: spine
                   hosts:
-                    leaf1-CAS:
-                      ansible_host: 198.18.107.215
-                    leaf2-CAS:
-                      ansible_host: 198.18.107.216
-                CAS_POD2:
+                    spine1-CAS:
+                      ansible_host: 198.18.107.211
+                    spine2-CAS:
+                      ansible_host: 198.18.107.212
+                CAS_BORDERLEAFS:
+                  vars:
+                    type: l3leaf
                   hosts:
-                    leaf3-CAS:
-                      ansible_host: 198.18.107.217
-                    leaf4-CAS:
-                      ansible_host: 198.18.107.218
-        OI:
-          children:
-            OI_SPINES:
-              vars:
-                type: spine
-              hosts:
-                spine1-OI:
-                  ansible_host: 198.18.107.221
-                spine2-OI:
-                  ansible_host: 198.18.107.222
-            OI_BORDERLEAFS:
-              vars:
-                type: l3leaf
-              hosts:
-                borderleaf1-OI:
-                  ansible_host: 198.18.107.223
-                borderleaf2-OI:
-                  ansible_host: 198.18.107.224
-            OI_LEAFS:
-              vars:
-                type: l3leaf
+                    borderleaf1-CAS:
+                      ansible_host: 198.18.107.213
+                    borderleaf2-CAS:
+                      ansible_host: 198.18.107.214
+                CAS_LEAFS:
+                  vars:
+                    type: l3leaf
+                  children:
+                    CAS_POD1:
+                      hosts:
+                        leaf1-CAS:
+                          ansible_host: 198.18.107.215
+                        leaf2-CAS:
+                          ansible_host: 198.18.107.216
+                    CAS_POD2:
+                      hosts:
+                        leaf3-CAS:
+                          ansible_host: 198.18.107.217
+                        leaf4-CAS:
+                          ansible_host: 198.18.107.218
+            OI:
               children:
-                OI_POD1:
+                OI_SPINES:
+                  vars:
+                    type: spine
                   hosts:
-                    leaf1-OI:
-                      ansible_host: 198.18.107.225
-                    leaf2-OI:
-                      ansible_host: 198.18.107.226
-                OI_POD2:
+                    spine1-OI:
+                      ansible_host: 198.18.107.221
+                    spine2-OI:
+                      ansible_host: 198.18.107.222
+                OI_BORDERLEAFS:
+                  vars:
+                    type: l3leaf
                   hosts:
-                    leaf3-OI:
-                      ansible_host: 198.18.107.227
-                    leaf4-OI:
-                      ansible_host: 198.18.107.228
+                    borderleaf1-OI:
+                      ansible_host: 198.18.107.223
+                    borderleaf2-OI:
+                      ansible_host: 198.18.107.224
+                OI_LEAFS:
+                  vars:
+                    type: l3leaf
+                  children:
+                    OI_POD1:
+                      hosts:
+                        leaf1-OI:
+                          ansible_host: 198.18.107.225
+                        leaf2-OI:
+                          ansible_host: 198.18.107.226
+                    OI_POD2:
+                      hosts:
+                        leaf3-OI:
+                          ansible_host: 198.18.107.227
+                        leaf4-OI:
+                          ansible_host: 198.18.107.228
 
         DCI:
           children:
