@@ -87,19 +87,13 @@ all:
                           ansible_host: 198.18.107.228
 
         DCI:
-          children:
-            CAS_DCI:
-              vars:
-                type: l3leaf
-              hosts:
-                borderleaf1-CAS:
-                borderleaf2-CAS:
-            OI_DCI:
-              vars:
-                type: l3leaf
-              hosts:
-                borderleaf1-OI:
-                borderleaf2-OI:
+          vars:
+            type: l3leaf
+          hosts:
+            borderleaf1-CAS:
+            borderleaf2-CAS:
+            borderleaf1-OI:
+            borderleaf2-OI:
         CAS_TENANTS:
           children:
             CAS_LEAFS:

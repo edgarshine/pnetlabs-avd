@@ -75,7 +75,6 @@ l3leaf:
           mgmt_ip: 198.18.107.213/23
           bgp_as: 65110
           evpn_route_servers: [spine1-CAS,spine2-CAS,borderleaf1-OI]
-          uplink_switches: [spine1-CAS, spine2-CAS,borderleaf1-OI]
           uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5]
           uplink_switch_interfaces: [Ethernet5, Ethernet5, Ethernet5]
         borderleaf2-CAS:
@@ -251,6 +250,58 @@ l3leaf:
           mgmt_ip: 198.18.107.228/23
           bgp_as: 65212
           uplink_switch_interfaces: [Ethernet4, Ethernet4]
+    DCI:
+      # bgp_as: 65200
+      # virtual router mac for VNIs assigned to Leaf switches
+      # format: xx:xx:xx:xx:xx:xx
+      # virtual_router_mac_address: 00:1c:73:00:dc:02
+      # VTEP VXLAN Tunnel source loopback IP for leaf switches, assigned in /32s
+      # Assign range larger than total leaf switches
+      vtep_loopback_ipv4_pool: 172.27.221.0/24
+      # evpn_route_servers: [spine1-OI,spine2-OI]
+      loopback_ipv4_pool: 172.26.221.0/24
+      # Offset must be >= number of spines
+      loopback_ipv4_offset: 2
+      # Point to Point Network Summary range, assigned as /31 for each
+      # uplink interfaces
+      # Assign range larger than total [spines * total potential leafs * 2]
+      # uplink_ipv4_pool: 172.21.221.0/24
+      # uplink_switches: [spine1-OI, spine2-OI]
+      # uplink_interfaces: [Ethernet3, Ethernet4]
+      # mlag_interfaces: [Ethernet1, Ethernet2]
+      # mlag pair IP assignment - assign blocks - Assign range larger than
+      # total spines + total leafs switches
+      # mlag_peer_ipv4_pool: 10.255.248.0/24
+      # mlag_peer_l3_ipv4_pool: 10.255.247.0/24
+      nodes:
+        borderleaf1-CAS:
+          id: 1
+          mgmt_ip: 198.18.107.213/23
+          bgp_as: 65110
+          evpn_route_servers: [borderleaf1-OI]
+          uplink_interfaces: [Ethernet5]
+          uplink_switch_interfaces: [Ethernet5]
+        borderleaf2-CAS:
+          id: 2
+          mgmt_ip: 198.18.107.214/23
+          bgp_as: 65110
+          evpn_route_servers: [borderleaf2-OI]
+          uplink_interfaces: [Ethernet5]
+          uplink_switch_interfaces: [Ethernet5]
+        borderleaf1-OI:
+          id: 1
+          mgmt_ip: 198.18.107.223/23
+          bgp_as: 65210
+          evpn_route_servers: [borderleaf1-CAS]
+          uplink_interfaces: [Ethernet5]
+          uplink_switch_interfaces: [Ethernet5]
+        borderleaf2-OI:
+          id: 2
+          mgmt_ip: 198.18.107.224/23
+          bgp_as: 65210
+          evpn_route_servers: [borderleaf2-CAS]
+          uplink_interfaces: [Ethernet5]
+          uplink_switch_interfaces: [Ethernet5]
 
 # Disable update wait-for-convergence and update wait-for-install, which is not supported in vEOS-LAB.
 spine_bgp_defaults:
