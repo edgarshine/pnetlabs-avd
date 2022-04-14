@@ -1,0 +1,375 @@
+router_bgp:
+  as: '65211'
+  router_id: 172.30.221.5
+  bgp_defaults:
+  - maximum-paths 4 ecmp 4
+  peer_groups:
+    MLAG-IPv4-UNDERLAY-PEER:
+      type: ipv4
+      remote_as: '65211'
+      next_hop_self: true
+      maximum_routes: 12000
+      send_community: all
+      route_map_in: RM-MLAG-PEER-IN
+    IPv4-UNDERLAY-PEERS:
+      type: ipv4
+      maximum_routes: 12000
+      send_community: all
+    EVPN-OVERLAY-PEERS:
+      type: evpn
+      update_source: Loopback0
+      bfd: true
+      ebgp_multihop: '3'
+      send_community: all
+      maximum_routes: 0
+  address_family_ipv4:
+    peer_groups:
+      MLAG-IPv4-UNDERLAY-PEER:
+        activate: true
+      IPv4-UNDERLAY-PEERS:
+        activate: true
+      EVPN-OVERLAY-PEERS:
+        activate: false
+  neighbors:
+    10.255.247.5:
+      peer_group: MLAG-IPv4-UNDERLAY-PEER
+      description: leaf2-OI
+    172.21.221.8:
+      peer_group: IPv4-UNDERLAY-PEERS
+      remote_as: '65200'
+      description: spine1-OI_Ethernet1
+    172.21.221.10:
+      peer_group: IPv4-UNDERLAY-PEERS
+      remote_as: '65200'
+      description: spine2-OI_Ethernet1
+    172.31.220.1:
+      peer_group: EVPN-OVERLAY-PEERS
+      description: spine1-OI
+      remote_as: '65200'
+    172.31.220.2:
+      peer_group: EVPN-OVERLAY-PEERS
+      description: spine2-OI
+      remote_as: '65200'
+  redistribute_routes:
+    connected:
+      route_map: RM-CONN-2-BGP
+  address_family_evpn:
+    peer_groups:
+      EVPN-OVERLAY-PEERS:
+        activate: true
+  vrfs:
+    FW_Outside:
+      router_id: 172.30.221.5
+      rd: 172.30.221.5:111
+      route_targets:
+        import:
+          evpn:
+          - 111:111
+        export:
+          evpn:
+          - 111:111
+      neighbors:
+        10.255.247.5:
+          peer_group: MLAG-IPv4-UNDERLAY-PEER
+      redistribute_routes:
+      - connected
+  vlans:
+    1110:
+      tenant: FrontEnd
+      rd: 172.30.221.5:50110
+      route_targets:
+        both:
+        - 50110:50110
+      redistribute_routes:
+      - learned
+    1111:
+      tenant: FrontEnd
+      rd: 172.30.221.5:50111
+      route_targets:
+        both:
+        - 50111:50111
+      redistribute_routes:
+      - learned
+    100:
+      tenant: FrontEnd
+      rd: 172.30.221.5:55100
+      route_targets:
+        both:
+        - 55100:55100
+      redistribute_routes:
+      - learned
+    101:
+      tenant: FrontEnd
+      rd: 172.30.221.5:55101
+      route_targets:
+        both:
+        - 55101:55101
+      redistribute_routes:
+      - learned
+    102:
+      tenant: FrontEnd
+      rd: 172.30.221.5:55102
+      route_targets:
+        both:
+        - 55102:55102
+      redistribute_routes:
+      - learned
+static_routes:
+- vrf: MGMT
+  destination_address_prefix: 0.0.0.0/0
+  gateway: 198.18.106.1
+service_routing_protocols_model: multi-agent
+ip_routing: true
+vlan_internal_order:
+  allocation: ascending
+  range:
+    beginning: 1006
+    ending: 1199
+name_server:
+  source:
+    vrf: MGMT
+  nodes:
+  - 208.67.222.222
+  - 8.8.8.8
+spanning_tree:
+  mode: mstp
+  mst_instances:
+    '0':
+      priority: 4096
+  no_spanning_tree_vlan: 4093-4094
+local_users:
+  ansible:
+    privilege: 15
+    role: network-admin
+    sha512_password: $6$k2QzB8961/dFJf35$HLuhZBTypOM05zmGx99BAHI0.Zok8GUVm303zaZTJhQmp.cKq84un1e.cqztvC8ZFqRN6bCc.GkOknMBurXki.
+  netadmin:
+    privilege: 15
+    role: network-admin
+    sha512_password: $6$cK1bIDtMtCcnZC.1$/WgQmDoQ4pv4et2vYjX8M65SW667tVQreVBItTinbqOLP4Ef41bSt8rKLoLJMvwYLSw7gVJJMxUBdL1jagQ.9.
+vrfs:
+  MGMT:
+    ip_routing: false
+  FW_Outside:
+    tenant: FrontEnd
+    ip_routing: true
+management_interfaces:
+  Management1:
+    description: oob_management
+    shutdown: false
+    vrf: MGMT
+    ip_address: 198.18.107.225/23
+    gateway: 198.18.106.1
+    type: oob
+management_api_http:
+  enable_vrfs:
+    MGMT: {}
+  enable_https: true
+vlans:
+  4093:
+    tenant: system
+    name: LEAF_PEER_L3
+    trunk_groups:
+    - LEAF_PEER_L3
+  4094:
+    tenant: system
+    name: MLAG_PEER
+    trunk_groups:
+    - MLAG
+  1110:
+    tenant: FrontEnd
+    name: FrontEnd_OP_Zone_1
+  1111:
+    tenant: FrontEnd
+    name: FrontEnd_OP_Zone_2
+  3110:
+    tenant: FrontEnd
+    name: MLAG_iBGP_FW_Outside
+    trunk_groups:
+    - LEAF_PEER_L3
+  100:
+    tenant: FrontEnd
+    name: FW_CLUSTER
+  101:
+    tenant: FrontEnd
+    name: FW_INTERNA
+  102:
+    tenant: FrontEnd
+    name: FW_SERVICO
+vlan_interfaces:
+  Vlan4093:
+    description: MLAG_PEER_L3_PEERING
+    shutdown: false
+    ip_address: 10.255.247.4/31
+    mtu: 1500
+  Vlan4094:
+    description: MLAG_PEER
+    shutdown: false
+    ip_address: 10.255.248.4/31
+    no_autostate: true
+    mtu: 1500
+  Vlan1110:
+    tenant: FrontEnd
+    tags:
+    - opzone
+    description: FrontEnd_OP_Zone_1
+    shutdown: false
+    vrf: FW_Outside
+    ip_address_virtual: 10.1.110.1/24
+  Vlan1111:
+    tenant: FrontEnd
+    tags:
+    - opzone
+    description: FrontEnd_OP_Zone_2
+    shutdown: false
+    vrf: FW_Outside
+    ip_address_virtual: 10.1.111.1/24
+  Vlan3110:
+    tenant: FrontEnd
+    type: underlay_peering
+    shutdown: false
+    description: 'MLAG_PEER_L3_iBGP: vrf FW_Outside'
+    vrf: FW_Outside
+    ip_address: 10.255.247.4/31
+    mtu: 1500
+port_channel_interfaces:
+  Port-Channel1:
+    description: MLAG_PEER_leaf2-OI_Po1
+    type: switched
+    shutdown: false
+    vlans: 2-4094
+    mode: trunk
+    trunk_groups:
+    - LEAF_PEER_L3
+    - MLAG
+  Port-Channel5:
+    description: HOST1_PortChannel
+    type: switched
+    shutdown: false
+    mode: trunk
+    vlans: 1111
+    mlag: 5
+ethernet_interfaces:
+  Ethernet1:
+    peer: leaf2-OI
+    peer_interface: Ethernet1
+    peer_type: mlag_peer
+    description: MLAG_PEER_leaf2-OI_Ethernet1
+    type: switched
+    shutdown: false
+    channel_group:
+      id: 1
+      mode: active
+  Ethernet2:
+    peer: leaf2-OI
+    peer_interface: Ethernet2
+    peer_type: mlag_peer
+    description: MLAG_PEER_leaf2-OI_Ethernet2
+    type: switched
+    shutdown: false
+    channel_group:
+      id: 1
+      mode: active
+  Ethernet3:
+    peer: spine1-OI
+    peer_interface: Ethernet1
+    peer_type: spine
+    description: P2P_LINK_TO_SPINE1-OI_Ethernet1
+    mtu: 1500
+    type: routed
+    shutdown: false
+    ip_address: 172.21.221.9/31
+  Ethernet4:
+    peer: spine2-OI
+    peer_interface: Ethernet1
+    peer_type: spine
+    description: P2P_LINK_TO_SPINE2-OI_Ethernet1
+    mtu: 1500
+    type: routed
+    shutdown: false
+    ip_address: 172.21.221.11/31
+  Ethernet5:
+    peer: HOST1
+    peer_interface: Eth0
+    peer_type: server
+    description: HOST1_Eth0
+    type: switched
+    shutdown: false
+    mode: trunk
+    vlans: 1111
+    channel_group:
+      id: 5
+      mode: active
+mlag_configuration:
+  domain_id: OI_POD1
+  local_interface: Vlan4094
+  peer_address: 10.255.248.5
+  peer_link: Port-Channel1
+  reload_delay_mlag: 300
+  reload_delay_non_mlag: 330
+route_maps:
+  RM-MLAG-PEER-IN:
+    sequence_numbers:
+      10:
+        type: permit
+        set:
+        - origin incomplete
+        description: Make routes learned over MLAG Peer-link less preferred on spines to ensure optimal routing
+  RM-CONN-2-BGP:
+    sequence_numbers:
+      10:
+        type: permit
+        match:
+        - ip address prefix-list PL-LOOPBACKS-EVPN-OVERLAY
+loopback_interfaces:
+  Loopback0:
+    description: EVPN_Overlay_Peering
+    shutdown: false
+    ip_address: 172.30.221.5/32
+  Loopback1:
+    description: VTEP_VXLAN_Tunnel_Source
+    shutdown: false
+    ip_address: 172.31.221.5/32
+  Loopback100:
+    description: FW_Outside_VTEP_DIAGNOSTICS
+    shutdown: false
+    vrf: FW_Outside
+    ip_address: 10.255.2.5/32
+prefix_lists:
+  PL-LOOPBACKS-EVPN-OVERLAY:
+    sequence_numbers:
+      10:
+        action: permit 172.30.221.0/24 eq 32
+      20:
+        action: permit 172.31.221.0/24 eq 32
+router_bfd:
+  multihop:
+    interval: 1200
+    min_rx: 1200
+    multiplier: 3
+ip_igmp_snooping:
+  globally_enabled: true
+ip_virtual_router_mac_address: 00:1c:73:00:dc:02
+vxlan_interface:
+  Vxlan1:
+    description: leaf1-OI_VTEP
+    vxlan:
+      source_interface: Loopback1
+      virtual_router_encapsulation_mac_address: mlag-system-id
+      udp_port: 4789
+      vlans:
+        1110:
+          vni: 50110
+        1111:
+          vni: 50111
+        100:
+          vni: 55100
+        101:
+          vni: 55101
+        102:
+          vni: 55102
+      vrfs:
+        FW_Outside:
+          vni: 111
+virtual_source_nat_vrfs:
+  FW_Outside:
+    ip_address: 10.255.2.5

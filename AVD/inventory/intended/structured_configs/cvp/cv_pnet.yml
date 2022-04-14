@@ -1,0 +1,93 @@
+---
+CVP_DEVICES:
+  - fqdn: borderleaf1-CAS
+    parentContainerName: CAS_BORDERLEAFS
+    configlets:
+      - AVD_borderleaf1-CAS
+  - fqdn: borderleaf1-OI
+    parentContainerName: OI_BORDERLEAFS
+    configlets:
+      - AVD_borderleaf1-OI
+  - fqdn: borderleaf2-CAS
+    parentContainerName: CAS_BORDERLEAFS
+    configlets:
+      - AVD_borderleaf2-CAS
+  - fqdn: borderleaf2-OI
+    parentContainerName: OI_BORDERLEAFS
+    configlets:
+      - AVD_borderleaf2-OI
+  - fqdn: leaf1-CAS
+    parentContainerName: CAS_POD1
+    configlets:
+      - AVD_leaf1-CAS
+  - fqdn: leaf1-OI
+    parentContainerName: OI_POD1
+    configlets:
+      - AVD_leaf1-OI
+  - fqdn: leaf2-CAS
+    parentContainerName: CAS_POD1
+    configlets:
+      - AVD_leaf2-CAS
+  - fqdn: leaf2-OI
+    parentContainerName: OI_POD1
+    configlets:
+      - AVD_leaf2-OI
+  - fqdn: leaf3-CAS
+    parentContainerName: CAS_POD2
+    configlets:
+      - AVD_leaf3-CAS
+  - fqdn: leaf3-OI
+    parentContainerName: OI_POD2
+    configlets:
+      - AVD_leaf3-OI
+  - fqdn: leaf4-CAS
+    parentContainerName: CAS_POD2
+    configlets:
+      - AVD_leaf4-CAS
+  - fqdn: leaf4-OI
+    parentContainerName: OI_POD2
+    configlets:
+      - AVD_leaf4-OI
+  - fqdn: spine1-CAS
+    parentContainerName: CAS_SPINES
+    configlets:
+      - AVD_spine1-CAS
+  - fqdn: spine1-OI
+    parentContainerName: OI_SPINES
+    configlets:
+      - AVD_spine1-OI
+  - fqdn: spine2-CAS
+    parentContainerName: CAS_SPINES
+    configlets:
+      - AVD_spine2-CAS
+  - fqdn: spine2-OI
+    parentContainerName: OI_SPINES
+    configlets:
+      - AVD_spine2-OI
+CVP_CONTAINERS:
+  CAS:
+    parentContainerName: DC
+  CAS_BORDERLEAFS:
+    parentContainerName: CAS
+  CAS_LEAFS:
+    parentContainerName: CAS
+  CAS_POD1:
+    parentContainerName: CAS_LEAFS
+  CAS_POD2:
+    parentContainerName: CAS_LEAFS
+  CAS_SPINES:
+    parentContainerName: CAS
+  DC:
+    parentContainerName: Tenant
+  OI:
+    parentContainerName: DC
+  OI_BORDERLEAFS:
+    parentContainerName: OI
+  OI_LEAFS:
+    parentContainerName: OI
+  OI_POD1:
+    parentContainerName: OI_LEAFS
+  OI_POD2:
+    parentContainerName: OI_LEAFS
+  OI_SPINES:
+    parentContainerName: OI

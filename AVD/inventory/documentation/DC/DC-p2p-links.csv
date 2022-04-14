@@ -1,0 +1,27 @@
+Type,Node,Node Interface,Leaf IP Address,Peer Type,Peer Node,Peer Interface,Peer IP Address
+l3leaf,borderleaf1-CAS,Ethernet3,172.21.211.1/31,spine,spine1-CAS,Ethernet5,172.21.211.0/31
+l3leaf,borderleaf1-CAS,Ethernet4,172.21.211.3/31,spine,spine2-CAS,Ethernet5,172.21.211.2/31
+l3leaf,borderleaf1-CAS,Ethernet5,172.20.100.0/31,l3leaf,borderleaf1-OI,Ethernet5,172.20.100.1/31
+l3leaf,borderleaf1-OI,Ethernet3,172.21.221.1/31,spine,spine1-OI,Ethernet5,172.21.221.0/31
+l3leaf,borderleaf1-OI,Ethernet4,172.21.221.3/31,spine,spine2-OI,Ethernet5,172.21.221.2/31
+l3leaf,borderleaf2-CAS,Ethernet3,172.21.211.5/31,spine,spine1-CAS,Ethernet6,172.21.211.4/31
+l3leaf,borderleaf2-CAS,Ethernet4,172.21.211.7/31,spine,spine2-CAS,Ethernet6,172.21.211.6/31
+l3leaf,borderleaf2-CAS,Ethernet5,172.20.100.2/31,l3leaf,borderleaf2-OI,Ethernet5,172.20.100.3/31
+l3leaf,borderleaf2-OI,Ethernet3,172.21.221.5/31,spine,spine1-OI,Ethernet6,172.21.221.4/31
+l3leaf,borderleaf2-OI,Ethernet4,172.21.221.7/31,spine,spine2-OI,Ethernet6,172.21.221.6/31
+l3leaf,leaf1-CAS,Ethernet3,172.21.211.9/31,spine,spine1-CAS,Ethernet1,172.21.211.8/31
+l3leaf,leaf1-CAS,Ethernet4,172.21.211.11/31,spine,spine2-CAS,Ethernet1,172.21.211.10/31
+l3leaf,leaf1-OI,Ethernet3,172.21.221.9/31,spine,spine1-OI,Ethernet1,172.21.221.8/31
+l3leaf,leaf1-OI,Ethernet4,172.21.221.11/31,spine,spine2-OI,Ethernet1,172.21.221.10/31
+l3leaf,leaf2-CAS,Ethernet3,172.21.211.13/31,spine,spine1-CAS,Ethernet2,172.21.211.12/31
+l3leaf,leaf2-CAS,Ethernet4,172.21.211.15/31,spine,spine2-CAS,Ethernet2,172.21.211.14/31
+l3leaf,leaf2-OI,Ethernet3,172.21.221.13/31,spine,spine1-OI,Ethernet2,172.21.221.12/31
+l3leaf,leaf2-OI,Ethernet4,172.21.221.15/31,spine,spine2-OI,Ethernet2,172.21.221.14/31
+l3leaf,leaf3-CAS,Ethernet3,172.21.211.17/31,spine,spine1-CAS,Ethernet3,172.21.211.16/31
+l3leaf,leaf3-CAS,Ethernet4,172.21.211.19/31,spine,spine2-CAS,Ethernet3,172.21.211.18/31
+l3leaf,leaf3-OI,Ethernet3,172.21.221.17/31,spine,spine1-OI,Ethernet3,172.21.221.16/31
+l3leaf,leaf3-OI,Ethernet4,172.21.221.19/31,spine,spine2-OI,Ethernet3,172.21.221.18/31
+l3leaf,leaf4-CAS,Ethernet3,172.21.211.21/31,spine,spine1-CAS,Ethernet4,172.21.211.20/31
+l3leaf,leaf4-CAS,Ethernet4,172.21.211.23/31,spine,spine2-CAS,Ethernet4,172.21.211.22/31
+l3leaf,leaf4-OI,Ethernet3,172.21.221.21/31,spine,spine1-OI,Ethernet4,172.21.221.20/31
+l3leaf,leaf4-OI,Ethernet4,172.21.221.23/31,spine,spine2-OI,Ethernet4,172.21.221.22/31
